@@ -44,22 +44,62 @@ $_ENV['CACHE_STORE'] = 'array';
 putenv('LOG_CHANNEL=stderr');
 $_ENV['LOG_CHANNEL'] = 'stderr';
 
-// 3. Database connection resolution on Vercel
-$databaseUrl = getenv('DATABASE_URL') ?: ($_ENV['DATABASE_URL'] ?? '');
-$dbConnection = getenv('DB_CONNECTION') ?: ($_ENV['DB_CONNECTION'] ?? '');
+// 3. Robust Database connection resolution for Supabase PostgreSQL on Vercel
+$databaseUrl = getenv('DATABASE_URL') ?: ($_ENV['DATABASE_URL'] ?? ($_SERVER['DATABASE_URL'] ?? ''));
+$dbHost = getenv('DB_HOST') ?: ($_ENV['DB_HOST'] ?? ($_SERVER['DB_HOST'] ?? ''));
+$dbConnection = getenv('DB_CONNECTION') ?: ($_ENV['DB_CONNECTION'] ?? ($_SERVER['DB_CONNECTION'] ?? ''));
 
-if (!empty($databaseUrl) && str_starts_with($databaseUrl, 'postgres')) {
-    // Supabase PostgreSQL via URI
-    putenv('DB_CONNECTION=pgsql');
-    $_ENV['DB_CONNECTION'] = 'pgsql';
-    $_SERVER['DB_CONNECTION'] = 'pgsql';
-} elseif ($dbConnection === 'pgsql') {
-    // Explicit PGSQL
+if (!empty($databaseUrl)) {
+    $parsed = parse_url($databaseUrl);
+    if ($parsed !== false && !empty($parsed['host'])) {
+        $scheme = $parsed['scheme'] ?? 'pgsql';
+        $driver = ($scheme === 'postgres' || $scheme === 'postgresql') ? 'pgsql' : $scheme;
+        
+        putenv('DB_CONNECTION=' . $driver);
+        $_ENV['DB_CONNECTION'] = $driver;
+        $_SERVER['DB_CONNECTION'] = $driver;
+
+        putenv('DB_HOST=' . $parsed['host']);
+        $_ENV['DB_HOST'] = $parsed['host'];
+        $_SERVER['DB_HOST'] = $parsed['host'];
+
+        $port = (string)($parsed['port'] ?? '5432');
+        putenv('DB_PORT=' . $port);
+        $_ENV['DB_PORT'] = $port;
+        $_SERVER['DB_PORT'] = $port;
+
+        if (!empty($parsed['user'])) {
+            $user = urldecode($parsed['user']);
+            putenv('DB_USERNAME=' . $user);
+            $_ENV['DB_USERNAME'] = $user;
+            $_SERVER['DB_USERNAME'] = $user;
+        }
+
+        if (isset($parsed['pass'])) {
+            $pass = urldecode($parsed['pass']);
+            putenv('DB_PASSWORD=' . $pass);
+            $_ENV['DB_PASSWORD'] = $pass;
+            $_SERVER['DB_PASSWORD'] = $pass;
+        }
+
+        if (!empty($parsed['path'])) {
+            $dbName = ltrim($parsed['path'], '/');
+            putenv('DB_DATABASE=' . $dbName);
+            $_ENV['DB_DATABASE'] = $dbName;
+            $_SERVER['DB_DATABASE'] = $dbName;
+        }
+
+        putenv('DB_SSLMODE=require');
+        $_ENV['DB_SSLMODE'] = 'require';
+        $_SERVER['DB_SSLMODE'] = 'require';
+    }
+} elseif (!empty($dbHost) && $dbHost !== '127.0.0.1' && $dbHost !== 'localhost' && $dbHost !== 'postgres') {
+    // Explicit Cloud PostgreSQL variables
     putenv('DB_CONNECTION=pgsql');
     $_ENV['DB_CONNECTION'] = 'pgsql';
     $_SERVER['DB_CONNECTION'] = 'pgsql';
 } else {
-    // Safe Fallback to SQLite in /tmp if no external DB is configured
+    // Safe Fallback to SQLite in /tmp if no valid external DB is configured
     $dbPath = '/tmp/database.sqlite';
     if (!file_exists($dbPath)) {
         @touch($dbPath);
