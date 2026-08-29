@@ -8,15 +8,15 @@
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:title" content="{{ $siteTitle ?? 'Kode Redeem Free Fire Terbaru 2026, Klaim Diamond dan Skin Gratis | Esports ID' }}">
+  <meta property="og:title" content="{{ $siteTitle ?? 'Kode Redeem Free Fire & Top Up Diamond Gratis 2026 | Esports ID' }}">
   <meta property="og:description" content="{{ $siteDescription ?? 'Dapatkan deretan kode redeem Free Fire (FF) terbaru hari ini. Klaim ribuan diamond dan skin langka gratis!' }}">
-  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/mentahan-ff.jfif') }}">
+  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/bg.jpg') }}">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ $siteTitle ?? 'Kode Redeem Free Fire Terbaru 2026, Klaim Diamond dan Skin Gratis | Esports ID' }}">
+  <meta name="twitter:title" content="{{ $siteTitle ?? 'Kode Redeem Free Fire & Top Up Diamond Gratis 2026 | Esports ID' }}">
   <meta name="twitter:description" content="{{ $siteDescription ?? 'Dapatkan deretan kode redeem Free Fire (FF) terbaru hari ini. Klaim ribuan diamond dan skin langka gratis!' }}">
-  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/mentahan-ff.jfif') }}">
+  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/bg.jpg') }}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -164,7 +164,7 @@
       width: 100%;
       height: 380px;
       border-radius: 12px;
-      background: linear-gradient(rgba(15, 18, 25, 0.4), rgba(15, 18, 25, 0.8)), url('{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/mentahan-ff.jfif') }}') center/cover no-repeat;
+      background: linear-gradient(rgba(15, 18, 25, 0.4), rgba(15, 18, 25, 0.8)), url('{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/bg.jpg') }}') center/cover no-repeat;
       position: relative;
       overflow: hidden;
       margin-bottom: 24px;

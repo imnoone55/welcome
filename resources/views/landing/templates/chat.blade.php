@@ -11,13 +11,13 @@
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:title" content="{{ $siteTitle ?? 'Cek Status Bantuan Sosial & Perubahan Desil DTKS - Gampil Akses' }}">
   <meta property="og:description" content="{{ $siteDescription ?? 'Layanan resmi pengecekan data penerima bansos (PKH, BPNT, BLT) dan status desil DTKS 2026.' }}">
-  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/bansos-banner.jpg') }}">
+  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ $siteTitle ?? 'Cek Status Bantuan Sosial & Perubahan Desil DTKS - Gampil Akses' }}">
   <meta name="twitter:description" content="{{ $siteDescription ?? 'Layanan resmi pengecekan data penerima bansos (PKH, BPNT, BLT) dan status desil DTKS 2026.' }}">
-  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/bansos-banner.jpg') }}">
+  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}">
 
   <!-- Tailwind CSS & FontAwesome Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -90,7 +90,7 @@
       <!-- Hero Banner Image -->
       <div class="relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl shadow-slate-300/40 border border-slate-200 bg-white">
         <img 
-          src="{{ asset('images/landing/bansos-banner.jpg') }}" 
+          src="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}" 
           alt="Banner Pelayanan Cek Bansos dan Pemutakhiran Desil DTKS" 
           class="w-full h-48 sm:h-72 object-cover object-center transform hover:scale-[1.01] transition-transform duration-500"
         >

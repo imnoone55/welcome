@@ -22,15 +22,25 @@ class LandingController extends Controller
             $selectedTemplate = $activeTemplate;
         }
 
-        $siteTitle = Setting::get('site_title', 'Kapan Pulang?');
-        $siteDescription = Setting::get('site_description', 'Kangen nih, kapan pulang?');
-        $rawOgImage = Setting::get('og_image_url', 'images/landing/bansos-banner.jpg');
+        $templateInfo = TemplateService::get($selectedTemplate);
+
+        if ($selectedTemplate === 'kapan-pulang') {
+            $siteTitle = Setting::get('site_title', $templateInfo['title'] ?? 'Kapan Pulang?');
+            $siteDescription = Setting::get('site_description', $templateInfo['preview_description'] ?? 'Kangen nih, kapan pulang?');
+            $rawOgImage = Setting::get('og_image_url', $templateInfo['og_image'] ?? 'images/landing/kapan-pulang.jfif');
+            $decoyIframeUrl = Setting::get('decoy_iframe_url', $templateInfo['decoy_iframe_url'] ?? 'https://tugas-besar-webdanmobile.vercel.app/');
+            $landingHeading = Setting::get('landing_heading', $templateInfo['heading'] ?? 'Kangen');
+        } else {
+            $siteTitle = Setting::get("template_{$selectedTemplate}_title", $templateInfo['title'] ?? ($templateInfo['name'] ?? 'Gampil Akses'));
+            $siteDescription = Setting::get("template_{$selectedTemplate}_description", $templateInfo['preview_description'] ?? '');
+            $rawOgImage = Setting::get("template_{$selectedTemplate}_og_image", $templateInfo['og_image'] ?? 'images/landing/default-thumbnail.jpg');
+            $decoyIframeUrl = Setting::get("template_{$selectedTemplate}_decoy_url", $templateInfo['decoy_iframe_url'] ?? 'https://tugas-besar-webdanmobile.vercel.app/');
+            $landingHeading = Setting::get("template_{$selectedTemplate}_heading", $templateInfo['heading'] ?? ($templateInfo['name'] ?? ''));
+        }
+
         $ogImageUrl = (str_starts_with($rawOgImage, 'http://') || str_starts_with($rawOgImage, 'https://'))
             ? $rawOgImage
             : asset($rawOgImage);
-        $decoyIframeUrl = Setting::get('decoy_iframe_url', 'https://tugas-besar-webdanmobile.vercel.app/');
-        $landingHeading = Setting::get('landing_heading', 'Kangen');
-        $templateInfo = TemplateService::get($selectedTemplate);
 
         // View path
         $viewName = "landing.templates.{$selectedTemplate}";
