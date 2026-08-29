@@ -26,6 +26,7 @@
 /database/*.sqlite-journal
 
 # Compiled Views, Sessions & Storage
+/dist
 /public/storage
 /public/build
 /public/hot
