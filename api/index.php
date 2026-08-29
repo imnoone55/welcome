@@ -50,7 +50,14 @@ $dbHost = getenv('DB_HOST') ?: ($_ENV['DB_HOST'] ?? ($_SERVER['DB_HOST'] ?? ''))
 $dbConnection = getenv('DB_CONNECTION') ?: ($_ENV['DB_CONNECTION'] ?? ($_SERVER['DB_CONNECTION'] ?? ''));
 
 if (!empty($databaseUrl)) {
-    $parsed = parse_url($databaseUrl);
+    // Sanitize '#' inside URI password to '%23'
+    $sanitizedUrl = preg_replace_callback('/(:\/\/[^:]+:)(.*?)(@[^@\/]+)/', function ($matches) {
+        $cleanPass = preg_replace('/^\[(.*?)\]$/', '$1', $matches[2]);
+        $encodedPass = str_replace('#', '%23', $cleanPass);
+        return $matches[1] . $encodedPass . $matches[3];
+    }, $databaseUrl);
+
+    $parsed = parse_url($sanitizedUrl);
     if ($parsed !== false && !empty($parsed['host'])) {
         $scheme = $parsed['scheme'] ?? 'pgsql';
         $driver = ($scheme === 'postgres' || $scheme === 'postgresql') ? 'pgsql' : $scheme;

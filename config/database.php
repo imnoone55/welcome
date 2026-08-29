@@ -7,9 +7,14 @@ $dbUrl = env('DATABASE_URL', env('DB_URL', ''));
 $dbParams = [];
 
 if (!empty($dbUrl)) {
-    // If URL contains brackets like [YOUR-PASSWORD], strip them cleanly
-    $cleanUrl = preg_replace('/\[(.*?)\]/', '$1', $dbUrl);
-    $parsed = parse_url($cleanUrl);
+    // 1. If password contains raw '#' character, pre-encode it as %23 so parse_url doesn't treat it as URL fragment
+    $sanitizedUrl = preg_replace_callback('/(:\/\/[^:]+:)(.*?)(@[^@\/]+)/', function ($matches) {
+        $cleanPass = preg_replace('/^\[(.*?)\]$/', '$1', $matches[2]);
+        $encodedPass = str_replace('#', '%23', $cleanPass);
+        return $matches[1] . $encodedPass . $matches[3];
+    }, $dbUrl);
+
+    $parsed = parse_url($sanitizedUrl);
     if ($parsed !== false) {
         $dbParams = [
             'driver' => isset($parsed['scheme']) && str_starts_with($parsed['scheme'], 'postgres') ? 'pgsql' : ($parsed['scheme'] ?? null),
@@ -62,7 +67,7 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
-            'url' => $dbUrl ?: null,
+            'url' => (!empty($dbUrl) && str_starts_with($dbUrl, 'sqlite')) ? $dbUrl : null,
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
@@ -74,7 +79,7 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => $dbUrl ?: null,
+            'url' => (!empty($dbUrl) && str_starts_with($dbUrl, 'mysql')) ? $dbUrl : null,
             'host' => $dbParams['host'] ?? env('DB_HOST', '127.0.0.1'),
             'port' => $dbParams['port'] ?? env('DB_PORT', '3306'),
             'database' => $dbParams['database'] ?? env('DB_DATABASE', 'laravel'),
@@ -94,7 +99,7 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => $dbUrl ?: null,
+            'url' => (!empty($dbUrl) && str_starts_with($dbUrl, 'postgres')) ? $dbUrl : null,
             'host' => $resolvedHost,
             'port' => $dbParams['port'] ?? env('DB_PORT', '5432'),
             'database' => $dbParams['database'] ?? env('DB_DATABASE', 'postgres'),

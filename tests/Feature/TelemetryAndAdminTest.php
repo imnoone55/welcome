@@ -169,7 +169,7 @@ class TelemetryAndAdminTest extends TestCase
 
         // Test Password update
         $response = $this->actingAs($admin)->post('/admin/settings/password', [
-            'current_password' => 'admin12345',
+            'current_password' => env('ADMIN_PASSWORD', 'admin12345'),
             'new_password' => 'newSecretPassword999',
             'new_password_confirmation' => 'newSecretPassword999',
         ]);
