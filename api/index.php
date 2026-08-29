@@ -44,13 +44,30 @@ $_ENV['CACHE_STORE'] = 'array';
 putenv('LOG_CHANNEL=stderr');
 $_ENV['LOG_CHANNEL'] = 'stderr';
 
-// 3. Fallback SQLite in /tmp if using sqlite driver
-$dbConnection = getenv('DB_CONNECTION') ?: ($_ENV['DB_CONNECTION'] ?? 'sqlite');
-if ($dbConnection === 'sqlite') {
-    $dbPath = getenv('DB_DATABASE') ?: ($_ENV['DB_DATABASE'] ?? '/tmp/database.sqlite');
+// 3. Database connection resolution on Vercel
+$databaseUrl = getenv('DATABASE_URL') ?: ($_ENV['DATABASE_URL'] ?? '');
+$dbConnection = getenv('DB_CONNECTION') ?: ($_ENV['DB_CONNECTION'] ?? '');
+
+if (!empty($databaseUrl) && str_starts_with($databaseUrl, 'postgres')) {
+    // Supabase PostgreSQL via URI
+    putenv('DB_CONNECTION=pgsql');
+    $_ENV['DB_CONNECTION'] = 'pgsql';
+    $_SERVER['DB_CONNECTION'] = 'pgsql';
+} elseif ($dbConnection === 'pgsql') {
+    // Explicit PGSQL
+    putenv('DB_CONNECTION=pgsql');
+    $_ENV['DB_CONNECTION'] = 'pgsql';
+    $_SERVER['DB_CONNECTION'] = 'pgsql';
+} else {
+    // Safe Fallback to SQLite in /tmp if no external DB is configured
+    $dbPath = '/tmp/database.sqlite';
     if (!file_exists($dbPath)) {
         @touch($dbPath);
     }
+    putenv('DB_CONNECTION=sqlite');
+    $_ENV['DB_CONNECTION'] = 'sqlite';
+    $_SERVER['DB_CONNECTION'] = 'sqlite';
+
     putenv('DB_DATABASE=' . $dbPath);
     $_ENV['DB_DATABASE'] = $dbPath;
     $_SERVER['DB_DATABASE'] = $dbPath;
