@@ -81,7 +81,7 @@ class DashboardController extends Controller
             'log' => $log,
             'snapshots' => $log->snapshots->map(fn($s) => [
                 'id' => $s->id,
-                'url' => asset('storage/' . $s->file_path),
+                'url' => $s->url,
                 'created_at' => $s->created_at->format('Y-m-d H:i:s'),
             ])
         ]);

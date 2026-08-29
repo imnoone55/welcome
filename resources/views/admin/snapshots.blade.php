@@ -25,10 +25,10 @@
             @foreach($snapshots as $snap)
                 <div class="group bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-lg hover:border-pink-500/50 transition duration-200">
                     <div class="aspect-video bg-black relative overflow-hidden">
-                        <img src="{{ asset('storage/' . $snap->file_path) }}" 
+                        <img src="{{ $snap->url }}" 
                              alt="Snapshot" 
                              class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                        <a href="{{ asset('storage/' . $snap->file_path) }}" target="_blank" 
+                        <a href="{{ $snap->url }}" target="_blank" 
                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition">
                             <i class="fa-solid fa-up-right-and-down-left-from-center text-lg"></i>
                         </a>

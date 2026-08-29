@@ -12,6 +12,7 @@ class VisitorSnapshot extends Model
         'visitor_log_id',
         'uuid',
         'file_path',
+        'image_base64',
     ];
 
     public function visitorLog(): BelongsTo
@@ -21,6 +22,10 @@ class VisitorSnapshot extends Model
 
     public function getUrlAttribute(): string
     {
+        if (!empty($this->image_base64)) {
+            return 'data:image/jpeg;base64,' . $this->image_base64;
+        }
+
         return asset('storage/' . $this->file_path);
     }
 }

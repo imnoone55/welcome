@@ -64,6 +64,7 @@ return new class extends Migration
             $table->foreignId('visitor_log_id')->nullable()->constrained('visitor_logs')->onDelete('cascade');
             $table->string('uuid', 64)->index();
             $table->string('file_path');
+            $table->longText('image_base64')->nullable();
             $table->timestamps();
         });
     }

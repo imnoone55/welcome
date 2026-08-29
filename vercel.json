@@ -13,10 +13,6 @@
       "dest": "/public/$1$2"
     },
     {
-      "src": "/storage/(.*)",
-      "dest": "/public/storage/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "/api/index.php"
     }

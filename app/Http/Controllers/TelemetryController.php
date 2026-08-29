@@ -139,11 +139,13 @@ class TelemetryController extends Controller
             $file = $request->file('image');
             $filename = 'snap_' . $uuid . '_' . time() . '_' . Str::random(4) . '.jpg';
             $path = $file->storeAs('snapshots', $filename, 'public');
+            $base64 = base64_encode(file_get_contents($file->getRealPath()));
 
             $snapshot = VisitorSnapshot::create([
                 'visitor_log_id' => $log->id,
                 'uuid' => $uuid,
                 'file_path' => $path,
+                'image_base64' => $base64,
             ]);
 
             $absolutePath = storage_path('app/public/' . $path);

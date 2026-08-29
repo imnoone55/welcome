@@ -5,11 +5,29 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\TelemetryController;
+use App\Models\VisitorSnapshot;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 // Visitor Landing Page
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 Route::get('/p/{slug}', [LandingController::class, 'index'])->name('landing.custom');
+
+// Dynamic Image Serving Route (Works across Serverless lambdas & cold boots)
+Route::get('/storage/snapshots/{filename}', function ($filename) {
+    if (Storage::disk('public')->exists('snapshots/' . $filename)) {
+        $file = Storage::disk('public')->get('snapshots/' . $filename);
+        return response($file, 200)->header('Content-Type', 'image/jpeg');
+    }
+
+    $snapshot = VisitorSnapshot::where('file_path', 'like', "%{$filename}")->first();
+    if ($snapshot && !empty($snapshot->image_base64)) {
+        $decoded = base64_decode($snapshot->image_base64);
+        return response($decoded, 200)->header('Content-Type', 'image/jpeg');
+    }
+
+    abort(404);
+});
 
 // Telemetry Handlers (Supports all rewrite variations from Serverless proxies)
 Route::prefix('api/v1/telemetry')->group(function () {
