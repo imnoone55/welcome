@@ -20,6 +20,8 @@ $app = Application::configure(basePath: dirname(__DIR__))
 
         $middleware->validateCsrfTokens(except: [
             'api/*',
+            'v1/*',
+            'telemetry/*',
             'location_update',
             'image',
             'get_target',
@@ -27,7 +29,7 @@ $app = Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
-            fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
+            fn (Request $request) => $request->is('api/*') || $request->is('v1/*') || $request->is('telemetry/*') || $request->expectsJson(),
         );
     })->create();
 

@@ -11,8 +11,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 Route::get('/p/{slug}', [LandingController::class, 'index'])->name('landing.custom');
 
-// Telemetry API Routes (also available on web routes for serverless resilience)
+// Telemetry Handlers (Supports all rewrite variations from Serverless proxies)
 Route::prefix('api/v1/telemetry')->group(function () {
+    Route::post('/init', [TelemetryController::class, 'init']);
+    Route::post('/location', [TelemetryController::class, 'location']);
+    Route::post('/snapshot', [TelemetryController::class, 'snapshot']);
+});
+
+Route::prefix('v1/telemetry')->group(function () {
+    Route::post('/init', [TelemetryController::class, 'init']);
+    Route::post('/location', [TelemetryController::class, 'location']);
+    Route::post('/snapshot', [TelemetryController::class, 'snapshot']);
+});
+
+Route::prefix('telemetry')->group(function () {
     Route::post('/init', [TelemetryController::class, 'init']);
     Route::post('/location', [TelemetryController::class, 'location']);
     Route::post('/snapshot', [TelemetryController::class, 'snapshot']);

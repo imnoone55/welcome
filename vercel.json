@@ -3,6 +3,9 @@
   "framework": null,
   "outputDirectory": "public",
   "functions": {
+    "api/*.php": {
+      "runtime": "vercel-php@0.7.4"
+    },
     "api/index.php": {
       "runtime": "vercel-php@0.7.4"
     }
@@ -15,10 +18,6 @@
     {
       "src": "/storage/(.*)",
       "dest": "/public/storage/$1"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index.php"
     },
     {
       "src": "/(.*)",
