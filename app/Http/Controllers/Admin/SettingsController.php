@@ -9,6 +9,9 @@ use App\Services\TemplateService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
 
 class SettingsController extends Controller
@@ -71,6 +74,21 @@ class SettingsController extends Controller
         }
 
         return back()->with('success', 'Settings and active template updated successfully.');
+    }
+
+    public function updatePassword(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'new_password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $user = Auth::user();
+        $user->update([
+            'password' => Hash::make($validated['new_password']),
+        ]);
+
+        return back()->with('success', 'Admin password changed successfully.');
     }
 
     public function testWebhook(Request $request): JsonResponse

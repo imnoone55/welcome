@@ -28,6 +28,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
+    Route::post('/settings/password', [SettingsController::class, 'updatePassword'])->name('settings.password');
     Route::post('/settings/test-webhook', [SettingsController::class, 'testWebhook'])->name('settings.test_webhook');
 });
 

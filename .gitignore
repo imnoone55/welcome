@@ -71,3 +71,6 @@ Homestead.yaml
 !vite.config.js
 !/resources/**/*.js
 !/public/**/*.js
+
+# vercel deployment
+.VERCEL_DEPLOYMENT.md

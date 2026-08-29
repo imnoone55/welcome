@@ -202,6 +202,43 @@
 
     </form>
 
+    <!-- Security & Password Change Card -->
+    <div class="p-6 bg-zinc-900 rounded-2xl border border-zinc-800 shadow-xl space-y-4">
+        <div class="border-b border-zinc-800 pb-3">
+            <h4 class="text-xs uppercase font-mono tracking-wider text-pink-400 font-semibold">Admin Account Security</h4>
+            <p class="text-xs text-zinc-400 mt-0.5">Change your operator dashboard password at any time.</p>
+        </div>
+
+        <form action="{{ route('admin.settings.password') }}" method="POST" class="space-y-4">
+            @csrf
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label for="current_password" class="block text-xs font-medium text-zinc-300 mb-1.5">Current Password</label>
+                    <input type="password" id="current_password" name="current_password" required
+                           class="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-sm text-white focus:outline-none focus:border-pink-500">
+                </div>
+
+                <div>
+                    <label for="new_password" class="block text-xs font-medium text-zinc-300 mb-1.5">New Password</label>
+                    <input type="password" id="new_password" name="new_password" minlength="8" required
+                           class="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-sm text-white focus:outline-none focus:border-pink-500">
+                </div>
+
+                <div>
+                    <label for="new_password_confirmation" class="block text-xs font-medium text-zinc-300 mb-1.5">Confirm New Password</label>
+                    <input type="password" id="new_password_confirmation" name="new_password_confirmation" minlength="8" required
+                           class="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-sm text-white focus:outline-none focus:border-pink-500">
+                </div>
+            </div>
+
+            <div class="flex justify-end pt-2">
+                <button type="submit" class="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white font-medium text-xs rounded-xl transition">
+                    <i class="fa-solid fa-key mr-1.5"></i> Update Password
+                </button>
+            </div>
+        </form>
+    </div>
+
 </div>
 
 <script>

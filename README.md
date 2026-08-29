@@ -66,11 +66,13 @@ Aplikasi akan aktif di: `http://127.0.0.1:8000`
 
 ---
 
-## 🔐 Akun Login Bawaan
+## 🔐 Kredensial Login Admin
 
 - **Halaman Login Admin**: `http://127.0.0.1:8000/login`
-- **Email**: `admin@r4ven.local`
-- **Password**: `password`
+- **Konfigurasi Akun**: Kredensial akun admin dapat diatur melalui variabel lingkungan `.env` / Environment Variables:
+  - `ADMIN_EMAIL`: Email admin (default: `admin@r4ven.local`)
+  - `ADMIN_PASSWORD`: Password admin pilihan Anda (default: `admin12345`)
+- Password juga dapat diubah kapan saja melalui menu **Admin Dashboard > Settings > Admin Account Security**.
 
 ---
 

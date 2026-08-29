@@ -19,7 +19,7 @@
                 R
             </div>
             <h1 class="text-2xl font-bold text-white tracking-wide">R4VEN ACCESS</h1>
-            <p class="text-xs text-zinc-500 font-mono mt-1">SECURE TELEMETRY MANAGEMENT</p>
+            <p class="text-xs text-zinc-500 font-mono mt-1">SECURE MANAGEMENT PORTAL</p>
         </div>
 
         @if ($errors->any())
@@ -37,7 +37,7 @@
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-zinc-500 pointer-events-none">
                         <i class="fa-solid fa-envelope text-sm"></i>
                     </span>
-                    <input type="email" id="email" name="email" value="{{ old('email', 'admin@r4ven.local') }}" required autofocus
+                    <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="admin@example.com" required autofocus
                            class="w-full pl-10 pr-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-sm text-white focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition placeholder-zinc-600">
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-zinc-500 pointer-events-none">
                         <i class="fa-solid fa-lock text-sm"></i>
                     </span>
-                    <input type="password" id="password" name="password" required
+                    <input type="password" id="password" name="password" placeholder="••••••••" required
                            class="w-full pl-10 pr-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-sm text-white focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition placeholder-zinc-600">
                 </div>
             </div>
@@ -64,10 +64,6 @@
                 Authenticate & Enter
             </button>
         </form>
-
-        <div class="mt-8 text-center text-xs text-zinc-600 border-t border-zinc-800/80 pt-4">
-            Default credentials: <span class="text-zinc-400 font-mono">admin@r4ven.local</span> / <span class="text-zinc-400 font-mono">password</span>
-        </div>
     </div>
 
 </body>

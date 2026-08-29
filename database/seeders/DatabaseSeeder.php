@@ -17,31 +17,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Seed Administrator
+        $adminEmail = env('ADMIN_EMAIL', 'admin@r4ven.local');
+        $adminPassword = env('ADMIN_PASSWORD', 'admin12345');
+
+        // 1. Seed Administrator from environment variable or default
         User::updateOrCreate(
-            ['email' => 'admin@r4ven.local'],
+            ['email' => $adminEmail],
             [
                 'name' => 'R4VEN Operator',
-                'password' => Hash::make('password'),
+                'password' => Hash::make($adminPassword),
                 'role' => 'admin',
             ]
         );
 
-        // 2. Seed Default Visitor Account (if needed)
-        User::updateOrCreate(
-            ['email' => 'visitor@r4ven.local'],
-            [
-                'name' => 'Demo Visitor',
-                'password' => Hash::make('password'),
-                'role' => 'visitor',
-            ]
-        );
-
-        // 3. Seed Default Settings
+        // 2. Seed Default Settings
         $defaultSettings = [
-            'discord_webhook_url' => 'https://discord.com/api/webhooks/1543156505837310014/RnUFOwgerSFjb20TmEiAF_Psvm69BCbMGTMD1Vz11SzwWiazBHbn-QxtbMfLTT4z8wgc',
+            'discord_webhook_url' => '',
             'bot_name' => 'R4VEN',
             'bot_avatar_url' => 'https://cdn.discordapp.com/attachments/746328746491117611/1053145270843613324/kisspng-black-hat-briefings-computer-icons-computer-virus-5b2fdfc3dc8499.6175504015298641319033.png',
+            'active_template' => 'kapan-pulang',
             'site_title' => 'Kapan Pulang?',
             'site_description' => 'Kangen nih, kapan pulang?',
             'og_image_url' => 'https://6a928218923dbf1a1a863b38.imgix.net/sandbox/images.jfif',

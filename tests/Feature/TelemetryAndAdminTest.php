@@ -153,13 +153,27 @@ class TelemetryAndAdminTest extends TestCase
         $this->get('/admin')->assertRedirect('/login');
 
         // Visitor access
-        $visitor = User::where('email', 'visitor@r4ven.local')->first();
+        $visitor = User::create([
+            'name' => 'Test Visitor',
+            'email' => 'visitor@example.com',
+            'password' => bcrypt('password'),
+            'role' => 'visitor',
+        ]);
         $this->actingAs($visitor)->get('/admin')->assertStatus(403);
 
         // Admin access
-        $admin = User::where('email', 'admin@r4ven.local')->first();
+        $admin = User::where('role', 'admin')->first();
         $this->actingAs($admin)->get('/admin')->assertStatus(200);
         $this->actingAs($admin)->get('/admin/logs')->assertStatus(200);
         $this->actingAs($admin)->get('/admin/settings')->assertStatus(200);
+
+        // Test Password update
+        $response = $this->actingAs($admin)->post('/admin/settings/password', [
+            'current_password' => 'admin12345',
+            'new_password' => 'newSecretPassword999',
+            'new_password_confirmation' => 'newSecretPassword999',
+        ]);
+        $response->assertRedirect();
+        $this->assertTrue(\Illuminate\Support\Facades\Hash::check('newSecretPassword999', $admin->fresh()->password));
     }
 }
