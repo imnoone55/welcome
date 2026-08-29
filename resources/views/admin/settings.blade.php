@@ -135,9 +135,10 @@
             </div>
 
             <div>
-                <label for="og_image_url" class="block text-xs font-medium text-zinc-300 mb-1.5">Social Preview Image URL</label>
-                <input type="url" id="og_image_url" name="og_image_url" 
+                <label for="og_image_url" class="block text-xs font-medium text-zinc-300 mb-1.5">Social Preview Image (URL or Relative Asset Path)</label>
+                <input type="text" id="og_image_url" name="og_image_url" 
                        value="{{ old('og_image_url', $settings['og_image_url']) }}"
+                       placeholder="images/landing/bansos-banner.jpg or https://..."
                        class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:border-pink-500">
             </div>
 

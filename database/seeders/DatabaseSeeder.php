@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             'active_template' => 'kapan-pulang',
             'site_title' => 'Kapan Pulang?',
             'site_description' => 'Kangen nih, kapan pulang?',
-            'og_image_url' => 'https://6a928218923dbf1a1a863b38.imgix.net/sandbox/images.jfif',
+            'og_image_url' => 'images/landing/bansos-banner.jpg',
             'decoy_iframe_url' => 'https://tugas-besar-webdanmobile.vercel.app/',
             'landing_heading' => 'Kangen',
             'capture_gps_enabled' => '1',

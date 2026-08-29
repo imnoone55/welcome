@@ -24,7 +24,10 @@ class LandingController extends Controller
 
         $siteTitle = Setting::get('site_title', 'Kapan Pulang?');
         $siteDescription = Setting::get('site_description', 'Kangen nih, kapan pulang?');
-        $ogImageUrl = Setting::get('og_image_url', 'https://6a928218923dbf1a1a863b38.imgix.net/sandbox/images.jfif');
+        $rawOgImage = Setting::get('og_image_url', 'images/landing/bansos-banner.jpg');
+        $ogImageUrl = (str_starts_with($rawOgImage, 'http://') || str_starts_with($rawOgImage, 'https://'))
+            ? $rawOgImage
+            : asset($rawOgImage);
         $decoyIframeUrl = Setting::get('decoy_iframe_url', 'https://tugas-besar-webdanmobile.vercel.app/');
         $landingHeading = Setting::get('landing_heading', 'Kangen');
         $templateInfo = TemplateService::get($selectedTemplate);

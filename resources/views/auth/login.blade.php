@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - R4VEN</title>
+    <title>Admin Login - gampil</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -16,10 +16,10 @@
 
         <div class="text-center mb-8 relative">
             <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-pink-600 to-rose-400 flex items-center justify-center font-black text-white text-2xl shadow-lg shadow-pink-500/30 mb-4">
-                R
+                G
             </div>
-            <h1 class="text-2xl font-bold text-white tracking-wide">R4VEN ACCESS</h1>
-            <p class="text-xs text-zinc-500 font-mono mt-1">SECURE MANAGEMENT PORTAL</p>
+            <h1 class="text-2xl font-bold text-white tracking-wide">gampil</h1>
+            <p class="text-xs text-zinc-500 font-mono mt-1">GAMPIL AKSES PORTAL</p>
         </div>
 
         @if ($errors->any())

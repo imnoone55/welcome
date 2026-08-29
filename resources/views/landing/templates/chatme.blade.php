@@ -3,7 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat Me — Let's Talk</title>
+  <title>{{ $siteTitle ?? "Chat Me — Let's Talk" }}</title>
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:title" content="{{ $siteTitle ?? "Chat Me — Let's Talk" }}">
+  <meta property="og:description" content="{{ $siteDescription ?? 'Modern playful chat invite page with instant chat action buttons. Mulai ngobrol sekarang!' }}">
+  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $siteTitle ?? "Chat Me — Let's Talk" }}">
+  <meta name="twitter:description" content="{{ $siteDescription ?? 'Modern playful chat invite page with instant chat action buttons. Mulai ngobrol sekarang!' }}">
+  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}">
 
   <style>
     * {
@@ -416,7 +429,7 @@
       <div class="profile-area">
         <div class="profile-card">
           <div class="profile-photo">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=85" alt="Foto profil">
+            <img src="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}" alt="Foto profil" style="width:100%; height:100%; object-fit:cover;">
             <div class="profile-gradient"></div>
             <div class="online-label">● Online</div>
             <div class="profile-info">

@@ -18,12 +18,12 @@ class TemplateService
             ],
             'chat' => [
                 'id' => 'chat',
-                'name' => 'Bantuan & Layanan Digital (PayKita)',
-                'category' => 'Customer Service',
-                'badge' => 'High Trust',
-                'description' => 'Help center & customer support chat portal disguise with WhatsApp trigger.',
-                'icon' => 'fa-headset',
-                'color' => 'from-blue-500 to-indigo-600',
+                'name' => 'Portal Cek Bansos & Perubahan Desil',
+                'category' => 'Pelayanan Publik / DTKS',
+                'badge' => 'Bansos & Desil',
+                'description' => 'Portal terpadu pengecekan status bantuan sosial (PKH, BPNT, PBI-JK) dan pemutakhiran data desil ekonomi DTKS.',
+                'icon' => 'fa-id-card',
+                'color' => 'from-blue-600 to-indigo-800',
             ],
             'chatme' => [
                 'id' => 'chatme',

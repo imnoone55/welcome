@@ -3,7 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kode Redeem Free Fire Terbaru 2026, Klaim Diamond dan Skin Gratis | Esports ID</title>
+  <title>{{ $siteTitle ?? 'Kode Redeem Free Fire Terbaru 2026, Klaim Diamond dan Skin Gratis | Esports ID' }}</title>
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:title" content="{{ $siteTitle ?? 'Kode Redeem Free Fire Terbaru 2026, Klaim Diamond dan Skin Gratis | Esports ID' }}">
+  <meta property="og:description" content="{{ $siteDescription ?? 'Dapatkan deretan kode redeem Free Fire (FF) terbaru hari ini. Klaim ribuan diamond dan skin langka gratis!' }}">
+  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/mentahan-ff.jfif') }}">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $siteTitle ?? 'Kode Redeem Free Fire Terbaru 2026, Klaim Diamond dan Skin Gratis | Esports ID' }}">
+  <meta name="twitter:description" content="{{ $siteDescription ?? 'Dapatkan deretan kode redeem Free Fire (FF) terbaru hari ini. Klaim ribuan diamond dan skin langka gratis!' }}">
+  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/mentahan-ff.jfif') }}">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Teko:wght@600;700&display=swap" rel="stylesheet">
@@ -150,7 +164,7 @@
       width: 100%;
       height: 380px;
       border-radius: 12px;
-      background: linear-gradient(135deg, #2b1055, #7597de, #ff4655);
+      background: linear-gradient(rgba(15, 18, 25, 0.4), rgba(15, 18, 25, 0.8)), url('{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/mentahan-ff.jfif') }}') center/cover no-repeat;
       position: relative;
       overflow: hidden;
       margin-bottom: 24px;

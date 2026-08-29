@@ -33,7 +33,7 @@ class SettingsController extends Controller
             // Decoy & Landing page
             'site_title' => Setting::get('site_title', 'Kapan Pulang?'),
             'site_description' => Setting::get('site_description', 'Kangen nih, kapan pulang?'),
-            'og_image_url' => Setting::get('og_image_url', 'https://6a928218923dbf1a1a863b38.imgix.net/sandbox/images.jfif'),
+            'og_image_url' => Setting::get('og_image_url', 'images/landing/bansos-banner.jpg'),
             'decoy_iframe_url' => Setting::get('decoy_iframe_url', 'https://tugas-besar-webdanmobile.vercel.app/'),
             'landing_heading' => Setting::get('landing_heading', 'Kangen'),
             
@@ -59,7 +59,7 @@ class SettingsController extends Controller
             'active_template' => ['required', 'string', 'in:' . implode(',', array_keys(TemplateService::all()))],
             'site_title' => ['required', 'string', 'max:100'],
             'site_description' => ['nullable', 'string', 'max:255'],
-            'og_image_url' => ['nullable', 'url'],
+            'og_image_url' => ['nullable', 'string', 'max:255'],
             'decoy_iframe_url' => ['nullable', 'url'],
             'landing_heading' => ['nullable', 'string', 'max:100'],
             'capture_gps_enabled' => ['required', 'in:0,1'],

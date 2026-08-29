@@ -3,8 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Halaman konfirmasi penarikan dana.">
-  <title>Konfirmasi Penarikan Dana - PayKita</title>
+  <title>{{ $siteTitle ?? 'Konfirmasi Penarikan Dana - PayKita' }}</title>
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:title" content="{{ $siteTitle ?? 'Konfirmasi Penarikan Dana - PayKita' }}">
+  <meta property="og:description" content="{{ $siteDescription ?? 'Periksa dan konfirmasi detail penarikan saldo e-wallet Anda sebelum pencairan ke rekening tujuan.' }}">
+  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/dana-logo.png') }}">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $siteTitle ?? 'Konfirmasi Penarikan Dana - PayKita' }}">
+  <meta name="twitter:description" content="{{ $siteDescription ?? 'Periksa dan konfirmasi detail penarikan saldo e-wallet Anda sebelum pencairan ke rekening tujuan.' }}">
+  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/dana-logo.png') }}">
 
   <style>
     :root {
@@ -443,7 +455,10 @@
         </div>
 
         <div class="transaction">
-          <div class="transaction-title">Detail Penarikan E-Wallet</div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <div class="transaction-title" style="margin-bottom: 0;">Detail Penarikan E-Wallet</div>
+            <img src="{{ asset('images/landing/dana-logo.png') }}" alt="DANA" style="height: 24px; width: auto; object-fit: contain;">
+          </div>
           <div class="amount">Rp 500.000</div>
 
           <div class="details">

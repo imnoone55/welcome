@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Admin Panel') - R4VEN Laravel</title>
+    <title>@yield('title', 'Admin Panel') - gampil</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -62,9 +62,9 @@
             </button>
             <div class="flex items-center space-x-2">
                 <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-pink-600 to-rose-400 flex items-center justify-center font-black text-white text-xs shadow-md shadow-pink-500/20">
-                    R
+                    G
                 </div>
-                <span class="font-bold tracking-wide text-white text-base">R4VEN</span>
+                <span class="font-bold tracking-wide text-white text-base">gampil</span>
             </div>
         </div>
 
@@ -94,11 +94,11 @@
             <div class="p-5 border-b border-zinc-800 flex items-center justify-between">
                 <div class="flex items-center space-x-3">
                     <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-pink-600 to-rose-400 flex items-center justify-center font-black text-white text-lg shadow-lg shadow-pink-500/20">
-                        R
+                        G
                     </div>
                     <div>
-                        <span class="font-bold text-lg tracking-wider text-white">R4VEN</span>
-                        <span class="text-[10px] block text-pink-400 font-mono font-semibold uppercase tracking-wider">Laravel Edition</span>
+                        <span class="font-bold text-lg tracking-wider text-white">gampil</span>
+                        <span class="text-[10px] block text-pink-400 font-mono font-semibold uppercase tracking-wider">Gampil Akses</span>
                     </div>
                 </div>
 
