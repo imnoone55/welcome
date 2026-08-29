@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
+
+class VisitorSnapshot extends Model
+{
+    protected $fillable = [
+        'visitor_log_id',
+        'uuid',
+        'file_path',
+    ];
+
+    public function visitorLog(): BelongsTo
+    {
+        return $this->belongsTo(VisitorLog::class, 'visitor_log_id');
+    }
+
+    public function getUrlAttribute(): string
+    {
+        return asset('storage/' . $this->file_path);
+    }
+}
