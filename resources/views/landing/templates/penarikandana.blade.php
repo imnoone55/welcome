@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ $siteTitle ?? 'Konfirmasi Penarikan Dana - PayKita' }}</title>
+  <title>{{ $siteTitle ?? 'Konfirmasi Penarikan Saldo Dompet Digital - DANA Indonesia' }}</title>
 
   <!-- Essential Meta Tags -->
   <meta name="description" content="{{ $siteDescription ?? 'Periksa dan konfirmasi detail penarikan saldo e-wallet Anda sebelum pencairan ke rekening tujuan.' }}">

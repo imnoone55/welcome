@@ -5,20 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ $siteTitle ?? "Chat Me — Let's Talk" }}</title>
 
+  <!-- Essential Meta Tags -->
+  <meta name="description" content="{{ $siteDescription ?? 'Seseorang telah mengirimkan pesan pribadi untuk Anda. Buka dan balas obrolan sekarang.' }}">
+
+  <!-- Schema.org / Google / WhatsApp Fallbacks -->
+  <meta itemprop="name" content="{{ $siteTitle ?? "Chat Me — Let's Talk" }}">
+  <meta itemprop="description" content="{{ $siteDescription ?? 'Seseorang telah mengirimkan pesan pribadi untuk Anda. Buka dan balas obrolan sekarang.' }}">
+  <meta itemprop="image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/kapan-pulang.jpg') }}">
+  <link rel="image_src" href="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/kapan-pulang.jpg') }}">
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:site_name" content="Chat Me">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:title" content="{{ $siteTitle ?? "Chat Me — Let's Talk" }}">
-  <meta property="og:description" content="{{ $siteDescription ?? 'Modern playful chat invite page with instant chat action buttons. Mulai ngobrol sekarang!' }}">
+  <meta property="og:description" content="{{ $siteDescription ?? 'Seseorang telah mengirimkan pesan pribadi untuk Anda. Buka dan balas obrolan sekarang.' }}">
   <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/kapan-pulang.jpg') }}">
   <meta property="og:image:secure_url" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/kapan-pulang.jpg') }}">
   <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ $siteTitle ?? "Chat Me — Let's Talk" }}">
-  <meta name="twitter:description" content="{{ $siteDescription ?? 'Modern playful chat invite page with instant chat action buttons. Mulai ngobrol sekarang!' }}">
+  <meta name="twitter:description" content="{{ $siteDescription ?? 'Seseorang telah mengirimkan pesan pribadi untuk Anda. Buka dan balas obrolan sekarang.' }}">
   <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/kapan-pulang.jpg') }}">
 
   <style>

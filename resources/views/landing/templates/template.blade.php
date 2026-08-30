@@ -5,21 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ $siteTitle ?? 'Cara Klaim Saldo Digital dengan Aman dan Efektif' }}</title>
 
+  <!-- Essential Meta Tags -->
+  <meta name="description" content="{{ $siteDescription ?? 'Ikuti langkah mudah untuk klaim saldo digital dan voucher resmi tanpa dipungut biaya.' }}">
+
+  <!-- Schema.org / Google / WhatsApp Fallbacks -->
+  <meta itemprop="name" content="{{ $siteTitle ?? 'Panduan Resmi Klaim Saldo & Voucher Digital Gratis' }}">
+  <meta itemprop="description" content="{{ $siteDescription ?? 'Ikuti langkah mudah untuk klaim saldo digital dan voucher resmi tanpa dipungut biaya.' }}">
+  <meta itemprop="image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/template-saldo.jpg') }}">
+  <link rel="image_src" href="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/template-saldo.jpg') }}">
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:site_name" content="Gampil Akses">
   <meta property="og:type" content="article">
+  <meta property="og:locale" content="id_ID">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:title" content="{{ $siteTitle ?? 'Panduan Resmi Klaim Saldo & Voucher Digital Gratis' }}">
   <meta property="og:description" content="{{ $siteDescription ?? 'Ikuti langkah mudah untuk klaim saldo digital dan voucher resmi tanpa dipungut biaya.' }}">
-  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/template-saldo.jpg') }}">
-  <meta property="og:image:secure_url" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/template-saldo.jpg') }}">
+  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/template-saldo.jpg') }}">
+  <meta property="og:image:secure_url" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/template-saldo.jpg') }}">
   <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ $siteTitle ?? 'Panduan Resmi Klaim Saldo & Voucher Digital Gratis' }}">
   <meta name="twitter:description" content="{{ $siteDescription ?? 'Ikuti langkah mudah untuk klaim saldo digital dan voucher resmi tanpa dipungut biaya.' }}">
-  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/template-saldo.jpg') }}">
+  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/template-saldo.jpg') }}">
 
   <style>
     :root {
