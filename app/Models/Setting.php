@@ -20,7 +20,10 @@ class Setting extends Model
                 return $default;
             }
             $setting = static::where('key', $key)->first();
-            return $setting ? ($setting->value ?? $default) : $default;
+            if (!$setting) {
+                return $default;
+            }
+            return $setting->value ?? '';
         } catch (\Throwable) {
             return $default;
         }

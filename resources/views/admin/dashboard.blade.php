@@ -61,12 +61,12 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
                 @php
                     $pastelBgs = [
-                        'kapan-pulang' => 'bg-pastel-yellow',
-                        'chat' => 'bg-pastel-purple',
-                        'chatme' => 'bg-pastel-pink',
+                        'gampil' => 'bg-pastel-yellow',
+                        'bansos' => 'bg-pastel-purple',
+                        'klaim-dana' => 'bg-pastel-orange',
                         'diamond' => 'bg-pastel-lime',
                         'penarikandana' => 'bg-pastel-green',
-                        'template' => 'bg-pastel-orange',
+                        'chatme' => 'bg-pastel-pink',
                     ];
                 @endphp
                 @foreach($templates as $id => $tpl)

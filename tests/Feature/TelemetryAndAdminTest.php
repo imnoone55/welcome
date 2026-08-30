@@ -25,12 +25,12 @@ class TelemetryAndAdminTest extends TestCase
     {
         $response = $this->get('/');
         $response->assertStatus(200);
-        $response->assertSee('Kapan Pulang?');
+        $response->assertSee('Gampil Akses');
     }
 
     public function test_custom_template_routes_render_successfully(): void
     {
-        $templates = ['chat', 'chatme', 'diamond', 'penarikandana', 'template', 'kapan-pulang'];
+        $templates = ['bansos', 'klaim-dana', 'gampil', 'diamond', 'penarikandana', 'chatme', 'chat', 'template', 'kapan-pulang'];
 
         foreach ($templates as $tpl) {
             $response = $this->get("/p/{$tpl}");

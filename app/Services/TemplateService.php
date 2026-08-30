@@ -7,8 +7,8 @@ class TemplateService
     public static function all(): array
     {
         return [
-            'kapan-pulang' => [
-                'id' => 'kapan-pulang',
+            'gampil' => [
+                'id' => 'gampil',
                 'name' => 'Custom Template (Kustomisasi Bebas)',
                 'category' => 'Custom / Universal',
                 'badge' => 'Customizable',
@@ -21,8 +21,8 @@ class TemplateService
                 'icon' => 'fa-sliders',
                 'color' => 'from-slate-700 to-indigo-900',
             ],
-            'chat' => [
-                'id' => 'chat',
+            'bansos' => [
+                'id' => 'bansos',
                 'name' => 'Portal Cek Bansos & Perubahan Desil',
                 'category' => 'Pelayanan Publik / DTKS',
                 'badge' => 'Bansos & Desil',
@@ -35,19 +35,19 @@ class TemplateService
                 'icon' => 'fa-id-card',
                 'color' => 'from-blue-600 to-indigo-800',
             ],
-            'chatme' => [
-                'id' => 'chatme',
-                'name' => 'Chat Me — Let\'s Talk',
-                'category' => 'Dating & Chat',
-                'badge' => 'Social',
-                'description' => 'Modern playful chat invite page with instant chat action buttons.',
-                'title' => 'Chat Me — Pesan Masuk Baru',
-                'preview_description' => 'Seseorang telah mengirimkan pesan pribadi untuk Anda. Buka dan balas obrolan sekarang.',
-                'heading' => 'Chat Baru Menunggu Anda',
-                'og_image' => 'images/landing/kapan-pulang.jpg',
-                'decoy_iframe_url' => 'https://web.whatsapp.com/',
-                'icon' => 'fa-comments',
-                'color' => 'from-purple-500 to-pink-500',
+            'klaim-dana' => [
+                'id' => 'klaim-dana',
+                'name' => 'Panduan Klaim Saldo Digital',
+                'category' => 'Tutorial & Voucher',
+                'badge' => 'Tutorial',
+                'description' => 'Step-by-step digital voucher claiming guide with interactive buttons.',
+                'title' => 'Panduan Resmi Klaim Saldo & Voucher Digital Gratis',
+                'preview_description' => 'Ikuti langkah mudah untuk klaim saldo digital dan voucher resmi tanpa dipungut biaya.',
+                'heading' => 'Panduan Klaim Saldo Digital',
+                'og_image' => 'images/landing/template-saldo.jpg',
+                'decoy_iframe_url' => '',
+                'icon' => 'fa-circle-check',
+                'color' => 'from-cyan-500 to-blue-600',
             ],
             'diamond' => [
                 'id' => 'diamond',
@@ -77,25 +77,32 @@ class TemplateService
                 'icon' => 'fa-wallet',
                 'color' => 'from-emerald-500 to-teal-600',
             ],
-            'template' => [
-                'id' => 'template',
-                'name' => 'Panduan Klaim Saldo Digital',
-                'category' => 'Tutorial & Voucher',
-                'badge' => 'Tutorial',
-                'description' => 'Step-by-step digital voucher claiming guide with interactive buttons.',
-                'title' => 'Panduan Resmi Klaim Saldo & Voucher Digital Gratis',
-                'preview_description' => 'Ikuti langkah mudah untuk klaim saldo digital dan voucher resmi tanpa dipungut biaya.',
-                'heading' => 'Panduan Klaim Saldo Digital',
-                'og_image' => 'images/landing/template-saldo.jpg',
-                'decoy_iframe_url' => '',
-                'icon' => 'fa-circle-check',
-                'color' => 'from-cyan-500 to-blue-600',
+            'chatme' => [
+                'id' => 'chatme',
+                'name' => 'Chat Me — Let\'s Talk',
+                'category' => 'Dating & Chat',
+                'badge' => 'Social',
+                'description' => 'Modern playful chat invite page with instant chat action buttons.',
+                'title' => 'Chat Me — Pesan Masuk Baru',
+                'preview_description' => 'Seseorang telah mengirimkan pesan pribadi untuk Anda. Buka dan balas obrolan sekarang.',
+                'heading' => 'Chat Baru Menunggu Anda',
+                'og_image' => 'images/landing/kapan-pulang.jpg',
+                'decoy_iframe_url' => 'https://web.whatsapp.com/',
+                'icon' => 'fa-comments',
+                'color' => 'from-purple-500 to-pink-500',
             ],
         ];
     }
 
     public static function get(string $key): ?array
     {
-        return static::all()[$key] ?? null;
+        $aliases = [
+            'kapan-pulang' => 'gampil',
+            'chat' => 'bansos',
+            'template' => 'klaim-dana',
+        ];
+
+        $normalizedKey = $aliases[$key] ?? $key;
+        return static::all()[$normalizedKey] ?? null;
     }
 }

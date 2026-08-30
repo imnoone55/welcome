@@ -11,20 +11,32 @@ class LandingController extends Controller
 {
     public function index(Request $request, ?string $slug = null): View
     {
-        $activeTemplate = Setting::get('active_template', 'kapan-pulang');
+        $aliases = [
+            'kapan-pulang' => 'gampil',
+            'chat' => 'bansos',
+            'template' => 'klaim-dana',
+        ];
 
-        // Check if slug matches a specific template ID
-        if ($slug && array_key_exists($slug, TemplateService::all())) {
-            $selectedTemplate = $slug;
-        } elseif ($slug && $slug === Setting::get('custom_landing_slug', 'kapan-pulang')) {
-            $selectedTemplate = $activeTemplate;
+        $rawActive = Setting::get('active_template', 'gampil');
+        $activeTemplate = $aliases[$rawActive] ?? $rawActive;
+
+        // Check if slug matches a specific template ID or alias
+        if ($slug) {
+            $normalizedSlug = $aliases[$slug] ?? $slug;
+            if (array_key_exists($normalizedSlug, TemplateService::all())) {
+                $selectedTemplate = $normalizedSlug;
+            } elseif ($slug === Setting::get('custom_landing_slug', 'gampil') || $normalizedSlug === 'gampil') {
+                $selectedTemplate = $activeTemplate;
+            } else {
+                $selectedTemplate = $activeTemplate;
+            }
         } else {
             $selectedTemplate = $activeTemplate;
         }
 
         $templateInfo = TemplateService::get($selectedTemplate);
 
-        if ($selectedTemplate === 'kapan-pulang') {
+        if ($selectedTemplate === 'gampil' || $selectedTemplate === 'kapan-pulang') {
             $siteTitle = Setting::get('site_title', $templateInfo['title'] ?? 'Portal Berita & Informasi Resmi - Gampil Akses');
             $siteDescription = Setting::get('site_description', $templateInfo['preview_description'] ?? 'Baca informasi dan pengumuman resmi terbaru hari ini melalui portal Gampil Akses.');
             $rawOgImage = Setting::get('og_image_url', $templateInfo['og_image'] ?? 'images/landing/default-thumbnail.jpg');
@@ -45,7 +57,7 @@ class LandingController extends Controller
         // View path
         $viewName = "landing.templates.{$selectedTemplate}";
         if (!view()->exists($viewName)) {
-            $viewName = "landing.templates.kapan-pulang";
+            $viewName = "landing.templates.gampil";
         }
 
         return view($viewName, compact(
