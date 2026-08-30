@@ -6,17 +6,20 @@
   <title>{{ $siteTitle ?? 'Kode Redeem Free Fire Terbaru 2026, Klaim Diamond dan Skin Gratis | Esports ID' }}</title>
 
   <!-- Open Graph Meta Tags -->
-  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Esports ID">
+  <meta property="og:type" content="article">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:title" content="{{ $siteTitle ?? 'Kode Redeem Free Fire & Top Up Diamond Gratis 2026 | Esports ID' }}">
   <meta property="og:description" content="{{ $siteDescription ?? 'Dapatkan deretan kode redeem Free Fire (FF) terbaru hari ini. Klaim ribuan diamond dan skin langka gratis!' }}">
-  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/bg.jpg') }}">
+  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bg.jpg') }}">
+  <meta property="og:image:secure_url" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bg.jpg') }}">
+  <meta property="og:image:type" content="image/jpeg">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ $siteTitle ?? 'Kode Redeem Free Fire & Top Up Diamond Gratis 2026 | Esports ID' }}">
   <meta name="twitter:description" content="{{ $siteDescription ?? 'Dapatkan deretan kode redeem Free Fire (FF) terbaru hari ini. Klaim ribuan diamond dan skin langka gratis!' }}">
-  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/bg.jpg') }}">
+  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bg.jpg') }}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

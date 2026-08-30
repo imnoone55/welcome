@@ -7,17 +7,20 @@
   <meta name="description" content="{{ $siteDescription ?? 'Layanan resmi pengecekan data penerima bansos (PKH, BPNT, BLT) dan status desil DTKS 2026.' }}">
 
   <!-- OpenGraph / Facebook -->
-  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Gampil Akses">
+  <meta property="og:type" content="article">
   <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:title" content="{{ $siteTitle ?? 'Cek Status Bantuan Sosial & Perubahan Desil DTKS - Gampil Akses' }}">
-  <meta property="og:description" content="{{ $siteDescription ?? 'Layanan resmi pengecekan data penerima bansos (PKH, BPNT, BLT) dan status desil DTKS 2026.' }}">
-  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}">
+  <meta property="og:title" content="{{ $siteTitle ?? 'Jadwal Pencairan & Cek NIK KTP Penerima Bansos PKH 2026 - Gampil Akses' }}">
+  <meta property="og:description" content="{{ $siteDescription ?? 'Cek jadwal pencairan dan status NIK KTP penerima Bantuan Sosial PKH, BPNT, dan perubahan desil DTKS terbaru.' }}">
+  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bansos-jadwal.jpg') }}">
+  <meta property="og:image:secure_url" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bansos-jadwal.jpg') }}">
+  <meta property="og:image:type" content="image/jpeg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ $siteTitle ?? 'Cek Status Bantuan Sosial & Perubahan Desil DTKS - Gampil Akses' }}">
-  <meta name="twitter:description" content="{{ $siteDescription ?? 'Layanan resmi pengecekan data penerima bansos (PKH, BPNT, BLT) dan status desil DTKS 2026.' }}">
-  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}">
+  <meta name="twitter:title" content="{{ $siteTitle ?? 'Jadwal Pencairan & Cek NIK KTP Penerima Bansos PKH 2026 - Gampil Akses' }}">
+  <meta name="twitter:description" content="{{ $siteDescription ?? 'Cek jadwal pencairan dan status NIK KTP penerima Bantuan Sosial PKH, BPNT, dan perubahan desil DTKS terbaru.' }}">
+  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bansos-jadwal.jpg') }}">
 
   <!-- Tailwind CSS & FontAwesome Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -90,7 +93,7 @@
       <!-- Hero Banner Image -->
       <div class="relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl shadow-slate-300/40 border border-slate-200 bg-white">
         <img 
-          src="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}" 
+          src="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/bansos-jadwal.jpg') }}" 
           alt="Banner Pelayanan Cek Bansos dan Pemutakhiran Desil DTKS" 
           class="w-full h-48 sm:h-72 object-cover object-center transform hover:scale-[1.01] transition-transform duration-500"
         >

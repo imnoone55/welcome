@@ -7,17 +7,20 @@
   <meta name="description" content="{{ $siteDescription ?? 'Baca informasi dan pengumuman resmi terbaru hari ini melalui portal Gampil Akses.' }}">
 
   <!-- Open Graph Meta Tags -->
+  <meta property="og:site_name" content="Gampil Akses">
   <meta property="og:type" content="article">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:title" content="{{ $siteTitle ?? 'Portal Berita & Informasi Resmi - Gampil Akses' }}">
   <meta property="og:description" content="{{ $siteDescription ?? 'Baca informasi dan pengumuman resmi terbaru hari ini melalui portal Gampil Akses.' }}">
-  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/default-thumbnail.jpg') }}">
+  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/default-thumbnail.jpg') }}">
+  <meta property="og:image:secure_url" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/default-thumbnail.jpg') }}">
+  <meta property="og:image:type" content="image/jpeg">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ $siteTitle ?? 'Portal Berita & Informasi Resmi - Gampil Akses' }}">
   <meta name="twitter:description" content="{{ $siteDescription ?? 'Baca informasi dan pengumuman resmi terbaru hari ini melalui portal Gampil Akses.' }}">
-  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/default-thumbnail.jpg') }}">
+  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/default-thumbnail.jpg') }}">
 
   <!-- Tailwind CSS & FontAwesome -->
   <script src="https://cdn.tailwindcss.com"></script>

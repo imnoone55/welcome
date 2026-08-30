@@ -6,17 +6,20 @@
   <title>{{ $siteTitle ?? "Chat Me — Let's Talk" }}</title>
 
   <!-- Open Graph Meta Tags -->
+  <meta property="og:site_name" content="Chat Me">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:title" content="{{ $siteTitle ?? "Chat Me — Let's Talk" }}">
   <meta property="og:description" content="{{ $siteDescription ?? 'Modern playful chat invite page with instant chat action buttons. Mulai ngobrol sekarang!' }}">
-  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}">
+  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/kapan-pulang.jpg') }}">
+  <meta property="og:image:secure_url" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/kapan-pulang.jpg') }}">
+  <meta property="og:image:type" content="image/jpeg">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ $siteTitle ?? "Chat Me — Let's Talk" }}">
   <meta name="twitter:description" content="{{ $siteDescription ?? 'Modern playful chat invite page with instant chat action buttons. Mulai ngobrol sekarang!' }}">
-  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/kapan-pulang.jfif') }}">
+  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/kapan-pulang.jpg') }}">
 
   <style>
     * {

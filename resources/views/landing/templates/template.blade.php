@@ -6,17 +6,20 @@
   <title>{{ $siteTitle ?? 'Cara Klaim Saldo Digital dengan Aman dan Efektif' }}</title>
 
   <!-- Open Graph Meta Tags -->
-  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Gampil Akses">
+  <meta property="og:type" content="article">
   <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:title" content="{{ $siteTitle ?? 'Cara Klaim Saldo Digital dengan Aman dan Efektif' }}">
-  <meta property="og:description" content="{{ $siteDescription ?? 'Panduan praktis klaim saldo dan voucher digital dengan aman, cepat, dan terverifikasi.' }}">
-  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/default-thumbnail.jpg') }}">
+  <meta property="og:title" content="{{ $siteTitle ?? 'Panduan Resmi Klaim Saldo & Voucher Digital Gratis' }}">
+  <meta property="og:description" content="{{ $siteDescription ?? 'Ikuti langkah mudah untuk klaim saldo digital dan voucher resmi tanpa dipungut biaya.' }}">
+  <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/template-saldo.jpg') }}">
+  <meta property="og:image:secure_url" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/template-saldo.jpg') }}">
+  <meta property="og:image:type" content="image/jpeg">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ $siteTitle ?? 'Cara Klaim Saldo Digital dengan Aman dan Efektif' }}">
-  <meta name="twitter:description" content="{{ $siteDescription ?? 'Panduan praktis klaim saldo dan voucher digital dengan aman, cepat, dan terverifikasi.' }}">
-  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/default-thumbnail.jpg') }}">
+  <meta name="twitter:title" content="{{ $siteTitle ?? 'Panduan Resmi Klaim Saldo & Voucher Digital Gratis' }}">
+  <meta name="twitter:description" content="{{ $siteDescription ?? 'Ikuti langkah mudah untuk klaim saldo digital dan voucher resmi tanpa dipungut biaya.' }}">
+  <meta name="twitter:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/template-saldo.jpg') }}">
 
   <style>
     :root {
@@ -163,7 +166,7 @@
       width: 100%;
       border-radius: 24px;
       overflow: hidden;
-      background: linear-gradient(135deg, rgba(8, 118, 232, 0.85), rgba(84, 181, 255, 0.7)), url('{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/bg.jpg') }}') center/cover no-repeat;
+      background: linear-gradient(135deg, rgba(8, 118, 232, 0.85), rgba(84, 181, 255, 0.7)), url('{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/template-saldo.jpg') }}') center/cover no-repeat;
       position: relative;
       cursor: pointer;
     }
