@@ -166,44 +166,44 @@
     .featured-banner {
       width: 100%;
       height: 380px;
-      border-radius: 12px;
-      background: linear-gradient(rgba(15, 18, 25, 0.4), rgba(15, 18, 25, 0.8)), url('{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/bg.jpg') }}') center/cover no-repeat;
+      border-radius: 14px;
+      background: linear-gradient(rgba(15, 18, 25, 0.2), rgba(15, 18, 25, 0.6)), url('{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/bg.jpg') }}') center/cover no-repeat;
       position: relative;
       overflow: hidden;
       margin-bottom: 24px;
       display: flex;
-      align-items: center;
-      justify-content: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       cursor: pointer;
     }
     .banner-overlay {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+      background: linear-gradient(to right, transparent 0%, rgba(15, 18, 25, 0.4) 40%, rgba(15, 18, 25, 0.85) 100%);
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
-      text-align: center;
-      padding: 20px;
+      text-align: right;
+      padding: 24px 36px;
     }
     .banner-title {
       font-family: 'Teko', sans-serif;
-      font-size: 48px;
+      font-size: 52px;
       color: #ffeb3b;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+      text-shadow: 0 4px 14px rgba(0,0,0,0.9);
       letter-spacing: 2px;
-      line-height: 1.1;
+      line-height: 1.05;
+      max-width: 340px;
     }
     .banner-sub {
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 15px;
+      font-weight: 700;
       color: #fff;
-      background: rgba(255, 70, 85, 0.85);
-      padding: 4px 16px;
+      background: linear-gradient(135deg, #ff4655, #d93845);
+      padding: 5px 18px;
       border-radius: 20px;
-      margin-top: 8px;
+      margin-top: 10px;
+      box-shadow: 0 4px 12px rgba(255, 70, 85, 0.4);
     }
 
     .article-body p {
@@ -364,6 +364,9 @@
     @media (max-width: 900px) {
       .layout-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
+      .banner-overlay { padding: 18px 20px; }
+      .banner-title { font-size: 38px; }
+      .featured-banner { height: 300px; }
     }
   </style>
 </head>
