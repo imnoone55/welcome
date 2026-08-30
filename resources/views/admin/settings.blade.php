@@ -149,10 +149,18 @@
             </div>
 
             <div>
-                <label for="site_description" class="block text-xs font-black text-black mb-1.5 uppercase tracking-wider">Social Preview Description / Ringkasan Artikel</label>
+                <label for="site_description" class="block text-xs font-black text-black mb-1.5 uppercase tracking-wider">Social Preview Description / Ringkasan Singkat</label>
                 <input type="text" id="site_description" name="site_description" 
                        value="{{ old('site_description', $settings['site_description']) }}"
                        class="w-full px-4 py-2.5 bg-white border-2 border-black rounded-xl text-xs sm:text-sm text-black font-bold focus:outline-none focus:bg-pastel-yellow/30 shadow-neo-sm">
+            </div>
+
+            <div>
+                <label for="landing_article_body" class="block text-xs font-black text-black mb-1.5 uppercase tracking-wider">Isi Artikel / Ringkasan & Fakta Informasi</label>
+                <textarea id="landing_article_body" name="landing_article_body" rows="4"
+                          placeholder="Tuliskan isi artikel atau informasi yang akan ditampilkan di halaman /p/gampil..."
+                          class="w-full px-4 py-2.5 bg-white border-2 border-black rounded-xl text-xs sm:text-sm text-black font-medium focus:outline-none focus:bg-pastel-yellow/30 shadow-neo-sm leading-relaxed">{{ old('landing_article_body', $settings['landing_article_body']) }}</textarea>
+                <p class="text-xs text-zinc-500 font-medium mt-0.5">Teks ini akan menggantikan paragraf ringkasan informasi di template utama /p/gampil.</p>
             </div>
 
             <div>
