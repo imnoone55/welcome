@@ -5,15 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ $siteTitle ?? 'Kode Redeem Free Fire Terbaru 2026, Klaim Diamond dan Skin Gratis | Esports ID' }}</title>
 
+  <!-- Essential Meta Tags -->
+  <meta name="description" content="{{ $siteDescription ?? 'Dapatkan deretan kode redeem Free Fire (FF) terbaru hari ini. Klaim ribuan diamond dan skin langka gratis!' }}">
+
+  <!-- Schema.org / Google / WhatsApp Fallbacks -->
+  <meta itemprop="name" content="{{ $siteTitle ?? 'Kode Redeem Free Fire & Top Up Diamond Gratis 2026 | Esports ID' }}">
+  <meta itemprop="description" content="{{ $siteDescription ?? 'Dapatkan deretan kode redeem Free Fire (FF) terbaru hari ini. Klaim ribuan diamond dan skin langka gratis!' }}">
+  <meta itemprop="image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bg.jpg') }}">
+  <link rel="image_src" href="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bg.jpg') }}">
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:site_name" content="Esports ID">
   <meta property="og:type" content="article">
+  <meta property="og:locale" content="id_ID">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:title" content="{{ $siteTitle ?? 'Kode Redeem Free Fire & Top Up Diamond Gratis 2026 | Esports ID' }}">
   <meta property="og:description" content="{{ $siteDescription ?? 'Dapatkan deretan kode redeem Free Fire (FF) terbaru hari ini. Klaim ribuan diamond dan skin langka gratis!' }}">
   <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bg.jpg') }}">
   <meta property="og:image:secure_url" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bg.jpg') }}">
   <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
@@ -167,18 +179,18 @@
       width: 100%;
       height: 380px;
       border-radius: 14px;
-      background: linear-gradient(rgba(15, 18, 25, 0.2), rgba(15, 18, 25, 0.6)), url('{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/bg.jpg') }}') center/cover no-repeat;
+      background: url('{{ !empty($ogImageUrl) ? $ogImageUrl : asset('images/landing/bg.jpg') }}') center/cover no-repeat;
       position: relative;
       overflow: hidden;
       margin-bottom: 24px;
       display: flex;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       cursor: pointer;
     }
     .banner-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, transparent 0%, rgba(15, 18, 25, 0.4) 40%, rgba(15, 18, 25, 0.85) 100%);
+      background: transparent;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -188,9 +200,10 @@
     }
     .banner-title {
       font-family: 'Teko', sans-serif;
-      font-size: 52px;
-      color: #ffeb3b;
-      text-shadow: 0 4px 14px rgba(0,0,0,0.9);
+      font-size: 54px;
+      font-weight: 700;
+      color: #000000;
+      text-shadow: none;
       letter-spacing: 2px;
       line-height: 1.05;
       max-width: 340px;

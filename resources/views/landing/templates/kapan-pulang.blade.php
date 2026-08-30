@@ -4,17 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ $siteTitle ?? 'Portal Berita & Informasi Resmi - Gampil Akses' }}</title>
+  <!-- Essential Meta Tags -->
   <meta name="description" content="{{ $siteDescription ?? 'Baca informasi dan pengumuman resmi terbaru hari ini melalui portal Gampil Akses.' }}">
+
+  <!-- Schema.org / Google / WhatsApp Fallbacks -->
+  <meta itemprop="name" content="{{ $siteTitle ?? 'Portal Berita & Informasi Resmi - Gampil Akses' }}">
+  <meta itemprop="description" content="{{ $siteDescription ?? 'Baca informasi dan pengumuman resmi terbaru hari ini melalui portal Gampil Akses.' }}">
+  <meta itemprop="image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/default-thumbnail.jpg') }}">
+  <link rel="image_src" href="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/default-thumbnail.jpg') }}">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:site_name" content="Gampil Akses">
   <meta property="og:type" content="article">
+  <meta property="og:locale" content="id_ID">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:title" content="{{ $siteTitle ?? 'Portal Berita & Informasi Resmi - Gampil Akses' }}">
   <meta property="og:description" content="{{ $siteDescription ?? 'Baca informasi dan pengumuman resmi terbaru hari ini melalui portal Gampil Akses.' }}">
   <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/default-thumbnail.jpg') }}">
   <meta property="og:image:secure_url" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/default-thumbnail.jpg') }}">
   <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">

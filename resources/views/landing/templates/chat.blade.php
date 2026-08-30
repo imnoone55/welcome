@@ -4,17 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>{{ $siteTitle ?? 'Cek Status Bantuan Sosial & Perubahan Desil DTKS - Gampil Akses' }}</title>
-  <meta name="description" content="{{ $siteDescription ?? 'Layanan resmi pengecekan data penerima bansos (PKH, BPNT, BLT) dan status desil DTKS 2026.' }}">
+  <!-- Essential Meta Tags -->
+  <meta name="description" content="{{ $siteDescription ?? 'Cek jadwal pencairan dan status NIK KTP penerima Bantuan Sosial PKH, BPNT, dan perubahan desil DTKS terbaru.' }}">
+
+  <!-- Schema.org / Google / WhatsApp Fallbacks -->
+  <meta itemprop="name" content="{{ $siteTitle ?? 'Jadwal Pencairan & Cek NIK KTP Penerima Bansos PKH 2026 - Gampil Akses' }}">
+  <meta itemprop="description" content="{{ $siteDescription ?? 'Cek jadwal pencairan dan status NIK KTP penerima Bantuan Sosial PKH, BPNT, dan perubahan desil DTKS terbaru.' }}">
+  <meta itemprop="image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bansos-jadwal.jpg') }}">
+  <link rel="image_src" href="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bansos-jadwal.jpg') }}">
 
   <!-- OpenGraph / Facebook -->
   <meta property="og:site_name" content="Gampil Akses">
   <meta property="og:type" content="article">
+  <meta property="og:locale" content="id_ID">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:title" content="{{ $siteTitle ?? 'Jadwal Pencairan & Cek NIK KTP Penerima Bansos PKH 2026 - Gampil Akses' }}">
   <meta property="og:description" content="{{ $siteDescription ?? 'Cek jadwal pencairan dan status NIK KTP penerima Bantuan Sosial PKH, BPNT, dan perubahan desil DTKS terbaru.' }}">
   <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bansos-jadwal.jpg') }}">
   <meta property="og:image:secure_url" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/bansos-jadwal.jpg') }}">
   <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">

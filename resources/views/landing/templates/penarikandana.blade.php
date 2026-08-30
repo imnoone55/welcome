@@ -5,15 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ $siteTitle ?? 'Konfirmasi Penarikan Dana - PayKita' }}</title>
 
+  <!-- Essential Meta Tags -->
+  <meta name="description" content="{{ $siteDescription ?? 'Periksa dan konfirmasi detail penarikan saldo e-wallet Anda sebelum pencairan ke rekening tujuan.' }}">
+
+  <!-- Schema.org / Google / WhatsApp Fallbacks -->
+  <meta itemprop="name" content="{{ $siteTitle ?? 'Konfirmasi Penarikan Saldo Dompet Digital - DANA Indonesia' }}">
+  <meta itemprop="description" content="{{ $siteDescription ?? 'Periksa dan konfirmasi detail penarikan saldo e-wallet Anda sebelum pencairan ke rekening tujuan.' }}">
+  <meta itemprop="image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/dana-logo.png') }}">
+  <link rel="image_src" href="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/dana-logo.png') }}">
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:site_name" content="DANA Indonesia">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:title" content="{{ $siteTitle ?? 'Konfirmasi Penarikan Saldo Dompet Digital - DANA Indonesia' }}">
   <meta property="og:description" content="{{ $siteDescription ?? 'Periksa dan konfirmasi detail penarikan saldo e-wallet Anda sebelum pencairan ke rekening tujuan.' }}">
   <meta property="og:image" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/dana-logo.png') }}">
   <meta property="og:image:secure_url" content="{{ !empty($ogImageUrl) ? $ogImageUrl : url('images/landing/dana-logo.png') }}">
   <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
