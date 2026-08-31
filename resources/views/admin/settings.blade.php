@@ -64,6 +64,7 @@
                         'diamond' => 'bg-pastel-lime',
                         'penarikandana' => 'bg-pastel-green',
                         'chatme' => 'bg-pastel-pink',
+                        'instagram' => 'bg-[#ffd5ea]',
                     ];
                 @endphp
                 @foreach($templates as $id => $tpl)

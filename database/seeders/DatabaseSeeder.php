@@ -17,14 +17,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $adminEmail = env('ADMIN_EMAIL', 'admin@r4ven.local');
+        $adminEmail = env('ADMIN_EMAIL', 'admin@gampil.local');
         $adminPassword = env('ADMIN_PASSWORD', 'admin12345');
 
         // 1. Seed Administrator from environment variable or default
         User::updateOrCreate(
             ['email' => $adminEmail],
             [
-                'name' => 'R4VEN Operator',
+                'name' => 'Gampil Admin',
                 'password' => Hash::make($adminPassword),
                 'role' => 'admin',
             ]

@@ -58,7 +58,7 @@
             <span class="text-xs uppercase font-mono tracking-wider text-black font-extrabold block mb-3">
                 <i class="fa-solid fa-layer-group text-purple-600 mr-1.5"></i> Quick Template Direct Links:
             </span>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2.5">
                 @php
                     $pastelBgs = [
                         'gampil' => 'bg-pastel-yellow',
@@ -67,6 +67,7 @@
                         'diamond' => 'bg-pastel-lime',
                         'penarikandana' => 'bg-pastel-green',
                         'chatme' => 'bg-pastel-pink',
+                        'instagram' => 'bg-[#ffd5ea]',
                     ];
                 @endphp
                 @foreach($templates as $id => $tpl)

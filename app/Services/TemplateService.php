@@ -91,6 +91,20 @@ class TemplateService
                 'icon' => 'fa-comments',
                 'color' => 'from-purple-500 to-pink-500',
             ],
+            'instagram' => [
+                'id' => 'instagram',
+                'name' => 'Instagram Private Profile',
+                'category' => 'Social Media',
+                'badge' => 'Instagram',
+                'description' => 'Instagram dark-mode private profile with follower stats and follow request trigger.',
+                'title' => 'sell122 • Instagram photos and videos',
+                'preview_description' => '49 Followers, 196 Following, 0 Posts - See Instagram photos and videos from sell122',
+                'heading' => 'sell122',
+                'og_image' => 'images/landing/instagram-thumbnail.jpg',
+                'decoy_iframe_url' => 'https://www.instagram.com/',
+                'icon' => 'fa-brands fa-instagram',
+                'color' => 'from-pink-600 via-purple-600 to-amber-500',
+            ],
         ];
     }
 

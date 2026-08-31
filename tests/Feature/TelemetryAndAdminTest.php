@@ -30,7 +30,7 @@ class TelemetryAndAdminTest extends TestCase
 
     public function test_custom_template_routes_render_successfully(): void
     {
-        $templates = ['bansos', 'klaim-dana', 'gampil', 'diamond', 'penarikandana', 'chatme', 'chat', 'template', 'kapan-pulang'];
+        $templates = ['bansos', 'klaim-dana', 'gampil', 'diamond', 'penarikandana', 'chatme', 'instagram', 'chat', 'template', 'kapan-pulang'];
 
         foreach ($templates as $tpl) {
             $response = $this->get("/p/{$tpl}");
